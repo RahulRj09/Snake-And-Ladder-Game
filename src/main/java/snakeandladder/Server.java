@@ -25,7 +25,7 @@ public class Server {
         public void handle(HttpExchange exchange) throws IOException {
             URI requestURI = exchange.getRequestURI();
             File root = FileSystemView.getFileSystemView().getHomeDirectory();
-            String path = root + "/SnakeAndLadderGame/src/main/java/resources/pages/" + requestURI;
+            String path = root + "/SnakeAndLadderGame/src/main/java/resources/" + requestURI;
             File file = new File(path);
             exchange.sendResponseHeaders(200, file.length());
             try (OutputStream os = exchange.getResponseBody()) {
