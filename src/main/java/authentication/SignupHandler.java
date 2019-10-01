@@ -15,6 +15,10 @@ public class SignupHandler implements HttpHandler {
         InputStreamReader streamReader = new InputStreamReader(exchange.getRequestBody(), StandardCharsets.UTF_8);
         BufferedReader bufferedReader = new BufferedReader(streamReader);
         String query = bufferedReader.readLine();
+        int indexOfAnd = query.indexOf("&");
+        StringBuffer name = getName(query,indexOfAnd);
+        System.out.println(name.toString());
+
         File root = FileSystemView.getFileSystemView().getHomeDirectory();
         String path = root + "/SnakeAndLadderGame/src/main/java/resources/pages/home.html";
         File file = new File(path);
@@ -24,5 +28,17 @@ public class SignupHandler implements HttpHandler {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private StringBuffer getName(String query, int indexOfAnd) {
+        StringBuffer name = new StringBuffer();
+        for (int i = 5; i < indexOfAnd; i++) {
+            if (query.charAt(i) == '+') {
+                name.append(" ");
+            } else {
+                name.append(query.charAt(i));
+            }
+        }
+        return name;
     }
 }
