@@ -10,4 +10,16 @@ public class Signup {
         this.emailId = emailId;
         this.password = password;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
