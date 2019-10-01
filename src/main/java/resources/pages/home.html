@@ -1,11 +1,19 @@
 <html>
 <head>
     <title>Home</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-       var emailId = localStorage.getItem("emailId");
-       console.log(emailId)
+        $.emailId = localStorage.getItem("emailId");
+        $(document).ready(function(){
+        $("button").click(function(){
+            $.get("/getPlayer?emailId="+$.emailId, function(data, status){
+                console.log(data);
+            });
+        });
+     });
     </script>
 </head>
 <body>
+<button>Get User</button>
 </body>
 </html>

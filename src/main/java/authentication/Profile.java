@@ -8,6 +8,7 @@ import java.io.IOException;
 public class Profile implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-
+        System.out.println(exchange.getRequestURI());
+        System.out.println(exchange.getRequestMethod());
     }
 }
