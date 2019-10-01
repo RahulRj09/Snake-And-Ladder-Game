@@ -20,7 +20,7 @@ public class SignupHandler implements HttpHandler {
         StringBuffer name = getName(query, indexOfAnd);
         StringBuffer emailId = getEmailId(query, indexOfAnd + 10);
         StringBuffer password = getPassword(indexOfAndForPassword + 10, query);
-        Signup signup = new Signup(name.toString(), emailId.toString(), password.toString());
+        Registration registration = new Registration(name.toString(), emailId.toString(), password.toString());
         File root = FileSystemView.getFileSystemView().getHomeDirectory();
         String path = root + "/SnakeAndLadderGame/src/main/java/resources/pages/home.html";
         File file = new File(path);

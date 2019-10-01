@@ -1,11 +1,11 @@
 package authentication;
 
-public class Signup {
+public class Registration {
     private String name;
     private String emailId;
     private String password;
 
-    public Signup(String name, String emailId, String password) {
+    public Registration(String name, String emailId, String password) {
         this.name = name;
         this.emailId = emailId;
         this.password = password;
