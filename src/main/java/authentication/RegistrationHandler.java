@@ -8,7 +8,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
-public class SignupHandler implements HttpHandler {
+public class RegistrationHandler implements HttpHandler {
     private int indexOfAndForPassword;
 
     @Override
