@@ -1,5 +1,6 @@
 package authentication;
 
+import DatabaseHelper.RegistrationDatabaseHelper;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -21,6 +22,8 @@ public class RegistrationHandler implements HttpHandler {
         StringBuffer emailId = getEmailId(query, indexOfAnd + 10);
         StringBuffer password = getPassword(indexOfAndForPassword + 10, query);
         Registration registration = new Registration(name.toString(), emailId.toString(), password.toString());
+        RegistrationDatabaseHelper registrationDatabaseHelper = new RegistrationDatabaseHelper();
+        registrationDatabaseHelper.insert(registration);
         File root = FileSystemView.getFileSystemView().getHomeDirectory();
         String path = root + "/SnakeAndLadderGame/src/main/java/resources/pages/home.html";
         File file = new File(path);
