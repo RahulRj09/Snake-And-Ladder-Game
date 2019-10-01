@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 public class RegistrationDatabaseHelper {
     DatabaseConnection databaseConnection = new DatabaseConnection();
+
     public void insert(Registration registration) {
         String sql = "insert into user(name,emailId,password) VALUES(?,?,?)";
         try (Connection conn = databaseConnection.connect();
@@ -20,5 +21,6 @@ public class RegistrationDatabaseHelper {
             System.out.println(e.getMessage());
         }
     }
+
 
 }

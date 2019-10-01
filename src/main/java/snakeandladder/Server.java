@@ -1,5 +1,6 @@
 package snakeandladder;
 
+import authentication.Profile;
 import authentication.RegistrationHandler;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -18,6 +19,7 @@ public class Server {
         HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
         server.createContext("/", new MyHandler());
         server.createContext("/registration", new RegistrationHandler());
+        server.createContext("/getPlayer", new Profile());
         server.setExecutor(null);
         server.start();
     }

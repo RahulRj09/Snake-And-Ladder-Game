@@ -2,15 +2,24 @@
 <head>
     <title>Register</title>
     <link rel="stylesheet" href="../static/css/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(function(){
+        $("#my-form").submit(function(e) {
+        let emailId = $("#email").val();
+        localStorage.setItem("emailId", emailId);
+        });
+    });
+    </script>
 </head>
 <body>
 <div class="authentication-page">
     <div class="form">
-        <form class="authentication-form" action="/registration" method="post">
+        <form class="authentication-form" action="/registration" method="post" id="my-form">
             <input type="text" placeholder="Name" name="name"/>
-            <input type="text" placeholder="Email-Id" name="email-id"/>
+            <input type="text" placeholder="Email-Id" name="email-id" id="email"/>
             <input type="password" placeholder="password" name="password"/>
-            <button type="submit">create</button>
+            <button type="submit" id="save">create</button>
             <p class="message">Already registered? <a href="./login.html">Sign In</a></p>
         </form>
     </div>

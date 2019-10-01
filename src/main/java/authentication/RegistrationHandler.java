@@ -61,6 +61,10 @@ public class RegistrationHandler implements HttpHandler {
             if (query.charAt(i) == '&') {
                 this.indexOfAndForPassword = i;
                 break;
+            } else if (query.charAt(i) == '%' || query.charAt(i) == '4' || query.charAt(i) == '0') {
+                if (query.charAt(i) == '%') {
+                    emailId.append('@');
+                }
             } else {
                 emailId.append(query.charAt(i));
             }
