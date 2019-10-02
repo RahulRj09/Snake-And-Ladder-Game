@@ -1,13 +1,14 @@
 <html>
 <head>
     <title>Home</title>
+    <link rel="stylesheet" href="../static/css/home.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
         $(window).on("load", GetAllProperties);
          function GetAllProperties() {
              $.emailId = localStorage.getItem("emailId");
-             console.log($.emailId)
+             $('h2').append($.emailId)
              $.get("/getProfile?emailId="+$.emailId, function(data, status){
                     console.log(data);
                     localStorage.clear();
@@ -16,5 +17,8 @@
     </script>
 </head>
 <body>
+<div class="header" id="myHeader">
+    <h2></h2>
+</div>
 </body>
 </html>
