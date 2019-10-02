@@ -16,8 +16,17 @@ public class LoginHandler implements HttpHandler {
         BufferedReader bufferedReader = new BufferedReader(streamReader);
         String query = bufferedReader.readLine();
         int indexOfAnd = query.indexOf("&");
-        StringBuffer emailId = getEmailId(query,indexOfAnd);
-        System.out.println(emailId);
+        StringBuffer emailId = getEmailId(query, indexOfAnd);
+        StringBuffer password = getPassword(indexOfAnd+10,query);
+
+    }
+
+    private StringBuffer getPassword(int i, String query) {
+        StringBuffer password = new StringBuffer();
+        for (int j = i; j < query.length(); j++) {
+            password.append(query.charAt(j));
+        }
+        return password;
     }
 
     private StringBuffer getEmailId(String query, int indexOfAnd) {
