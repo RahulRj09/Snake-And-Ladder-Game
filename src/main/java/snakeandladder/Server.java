@@ -20,7 +20,7 @@ public class Server {
         HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
         server.createContext("/", new MyHandler());
         server.createContext("/registration", new RegistrationHandler());
-        server.createContext("/getPlayer", new Profile());
+        server.createContext("/getProfile", new Profile());
         server.createContext("/login",new LoginHandler());
         server.setExecutor(null);
         server.start();

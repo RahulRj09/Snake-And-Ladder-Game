@@ -4,10 +4,10 @@ import DatabaseHelper.LoginDatabaseHelper;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import javax.swing.filechooser.FileSystemView;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.sql.SQLException;
 
 public class LoginHandler implements HttpHandler {
@@ -23,7 +23,23 @@ public class LoginHandler implements HttpHandler {
         LoginDatabaseHelper loginDatabaseHelper = new LoginDatabaseHelper();
         try {
             boolean result = loginDatabaseHelper.checkEmailForLogin(emailId.toString(), password.toString());
-            System.out.println(result);
+            if (result) {
+                File root = FileSystemView.getFileSystemView().getHomeDirectory();
+                String path = root + "/SnakeAndLadderGame/src/main/java/resources/pages/home.html";
+                File file = new File(path);
+                exchange.sendResponseHeaders(200, file.length());
+                try (OutputStream os = exchange.getResponseBody()) {
+                    Files.copy(file.toPath(), os);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            } else {
+                String response = "hello !";
+                exchange.sendResponseHeaders(200, response.length());
+                OutputStream os = exchange.getResponseBody();
+                os.write(response.getBytes());
+                os.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -4,12 +4,21 @@
         Login
     </title>
     <link rel="stylesheet" href="../static/css/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+        $("#my-form").submit(function(e) {
+        let emailId = $("#email").val();
+        localStorage.setItem("emailId", emailId);
+        });
+    });
+    </script>
 </head>
 <body>
 <div class="authentication-page">
     <div class="form">
-        <form class="authentication-form" method="post" action="/login">
-            <input type="text" placeholder="username" name="emailId"/>
+        <form class="authentication-form" method="post" action="/login" id="my-form">
+            <input type="text" placeholder="username" name="emailId" id="email"/>
             <input type="password" placeholder="password" name="password"/>
             <button type="submit">login</button>
             <p class="message">Not registered? <a href="./registration.html">Create an account</a></p>
