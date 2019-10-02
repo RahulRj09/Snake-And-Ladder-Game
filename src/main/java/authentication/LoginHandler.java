@@ -1,5 +1,6 @@
 package authentication;
 
+import DatabaseHelper.LoginDatabaseHelper;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -7,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLException;
 
 public class LoginHandler implements HttpHandler {
 
@@ -18,7 +20,13 @@ public class LoginHandler implements HttpHandler {
         int indexOfAnd = query.indexOf("&");
         StringBuffer emailId = getEmailId(query, indexOfAnd);
         StringBuffer password = getPassword(indexOfAnd + 10, query);
-
+        LoginDatabaseHelper loginDatabaseHelper = new LoginDatabaseHelper();
+        try {
+            boolean result = loginDatabaseHelper.checkEmailForLogin(emailId.toString(), password.toString());
+            System.out.println(result);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private StringBuffer getPassword(int i, String query) {
