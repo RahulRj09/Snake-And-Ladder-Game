@@ -17,7 +17,7 @@ public class LoginHandler implements HttpHandler {
         String query = bufferedReader.readLine();
         int indexOfAnd = query.indexOf("&");
         StringBuffer emailId = getEmailId(query, indexOfAnd);
-        StringBuffer password = getPassword(indexOfAnd+10,query);
+        StringBuffer password = getPassword(indexOfAnd + 10, query);
 
     }
 
