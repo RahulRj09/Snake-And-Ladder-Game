@@ -14,8 +14,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.nio.file.Files;
-import java.util.Arrays;
-import java.util.List;
+
 
 public class Server {
     public static void main(String[] args) throws Exception {
@@ -33,7 +32,8 @@ public class Server {
         public void handle(HttpExchange exchange) throws IOException {
             URI requestURI = exchange.getRequestURI();
             File root = FileSystemView.getFileSystemView().getHomeDirectory();
-            String path = root + "/SnakeAndLadderGame/src/main/java/resources/" + requestURI;
+            String newUri = requestURI.getPath().replaceAll("SnakeAndLadderGame", "pages");
+            String path = root + "/SnakeAndLadderGame/src/main/java/resources/" + newUri;
             File file = new File(path);
             exchange.sendResponseHeaders(200, file.length());
             try (OutputStream os = exchange.getResponseBody()) {
