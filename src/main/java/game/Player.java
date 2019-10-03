@@ -1,8 +1,8 @@
 package game;
 
 public class Player {
-    Token token;
-    int  numberOfTokenOut = 0;
+    private Token token;
+    private int  numberOfTokenOut = 0;
     public Player(Token token) {
         this.token = token;
     }
@@ -15,5 +15,7 @@ public class Player {
     }
 
     private void moveATokenOut() {
+        token.place();
+
     }
 }

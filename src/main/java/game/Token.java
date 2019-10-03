@@ -7,4 +7,8 @@ public class Token {
     public Token(String color) {
         this.color = color;
     }
+
+    public void place() {
+
+    }
 }
