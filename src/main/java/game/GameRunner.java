@@ -5,6 +5,7 @@ import java.util.List;
 
 public class GameRunner {
     public static void main(String[] args) {
+        RedYard red = new RedYard(new Token(), "red");
         Player player = new Player();
         Player player1 = new Player();
         List<Player> players = new ArrayList<>();
