@@ -8,4 +8,8 @@ public class Token {
         return this.position;
     }
 
+    public int setPosition(int numberOnDice) {
+        this.position +=numberOnDice;
+        return this.position;
+    }
 }
