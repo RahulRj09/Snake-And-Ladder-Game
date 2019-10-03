@@ -8,9 +8,8 @@
         $(window).on("load", GetAllProperties);
          function GetAllProperties() {
              $.emailId = localStorage.getItem("emailId");
-             $('h2').append($.emailId)
              $.get("/getProfile?emailId="+$.emailId, function(data, status){
-                    console.log(data);
+             $('h2').append(data.Profile[0].name)
                     localStorage.clear();
                 });
          }
