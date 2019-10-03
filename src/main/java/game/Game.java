@@ -14,4 +14,8 @@ public class Game {
     public boolean isRunning() {
         return true;
     }
+
+    public void play() {
+
+    }
 }

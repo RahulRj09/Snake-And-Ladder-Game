@@ -20,7 +20,7 @@ public class GameRunner {
         Board board = new Board(yard,dice);
         Game game = new Game(board,players);
         while (game.isRunning()){
-
+            game.play();
         }
     }
 }
