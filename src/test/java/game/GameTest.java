@@ -8,5 +8,6 @@ public class GameTest {
     @Test
     public void gameShouldBeRun() {
         Player player = new Player();
+        Board board = new Board();
     }
 }
