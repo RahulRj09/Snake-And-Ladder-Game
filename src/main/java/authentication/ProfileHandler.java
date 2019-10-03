@@ -13,7 +13,7 @@ public class ProfileHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
        String emailId = exchange.getRequestURI().getQuery();
         List<String> emailIdA = Arrays.asList(emailId.split("="));
-        emailIdA.get(1);
         ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
+        profileDatabaseHelper.getUserDetails( emailIdA.get(1));
     }
 }
