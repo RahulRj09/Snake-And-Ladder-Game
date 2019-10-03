@@ -19,6 +19,6 @@ public class Game {
     public void play() {
 
         Player currentPlayer = players.get(currentPlayerIndex);
-        Token token = currentPlayer.play(board.getDice());
+        currentPlayer.play(board.getDice());
     }
 }
