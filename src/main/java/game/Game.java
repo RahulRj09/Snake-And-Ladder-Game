@@ -20,5 +20,6 @@ public class Game {
 
         Player currentPlayer = players.get(currentPlayerIndex);
         currentPlayer.play(board.getDice());
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
     }
 }
