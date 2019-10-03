@@ -1,10 +1,10 @@
 package game;
 
 public class Player {
-    private Token token;
+    private Yard yard;
     private int  numberOfTokenOut = 0;
     public Player(Yard yard) {
-        this.token = yard;
+        this.yard = yard;
     }
 
     public void play(Dice dice) {
@@ -15,7 +15,7 @@ public class Player {
     }
 
     private void moveATokenOut() {
-        token.place();
+        yard.token.place();
 
     }
 }
