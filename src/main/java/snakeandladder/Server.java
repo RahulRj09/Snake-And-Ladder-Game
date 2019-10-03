@@ -14,6 +14,8 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.List;
 
 public class Server {
     public static void main(String[] args) throws Exception {
@@ -21,7 +23,7 @@ public class Server {
         server.createContext("/", new MyHandler());
         server.createContext("/registration", new RegistrationHandler());
         server.createContext("/getProfile", new ProfileHandler());
-        server.createContext("/login",new LoginHandler());
+        server.createContext("/login", new LoginHandler());
         server.setExecutor(null);
         server.start();
     }
