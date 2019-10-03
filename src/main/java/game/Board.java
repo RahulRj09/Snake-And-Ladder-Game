@@ -1,11 +1,13 @@
 package game;
 
+import java.util.List;
+
 public class Board {
     private Dice dice;
-    private Yard yard;
+    List<Yard> yards;
 
-    public Board(Yard yard, Dice dice) {
-        this.yard = yard;
+    public Board(List<Yard> yards, Dice dice) {
+        this.yards = yards;
         this.dice = dice;
     }
 
@@ -13,7 +15,7 @@ public class Board {
         return dice;
     }
 
-    public Yard getYard() {
-        return yard;
+    public List<Yard> getYard() {
+        return yards;
     }
 }

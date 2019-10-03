@@ -3,8 +3,8 @@ package game;
 public class Player {
     private Token token;
     private int  numberOfTokenOut = 0;
-    public Player(Token token) {
-        this.token = token;
+    public Player(Yard yard) {
+        this.token = yard;
     }
 
     public void play(Dice dice) {
