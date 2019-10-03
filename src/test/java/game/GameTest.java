@@ -23,5 +23,6 @@ public class GameTest {
         players.add(player1);
         Dice dice = new Dice();
         Board board = new Board(yard,dice);
+        Game game = new Game(board,players);
     }
 }
