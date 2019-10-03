@@ -18,7 +18,10 @@ public class GameTest {
         Yard yard = new Yard(tokens);
         Player player = new Player(red);
         Player player1 = new Player(green);
+        List<Player> players = new ArrayList<>();
+        players.add(player);
+        players.add(player1);
         Dice dice = new Dice();
-        Board board = new Board();
+        Board board = new Board(yard);
     }
 }
