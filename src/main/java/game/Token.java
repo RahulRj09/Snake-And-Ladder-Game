@@ -3,13 +3,15 @@ package game;
 public class Token {
     private int position = -1;
 
-    public int place(int startingPoint) {
+    public void place(int startingPoint) {
         this.position = startingPoint;
-        return this.position;
     }
 
-    public int setPosition(int numberOnDice) {
+    public void setPosition(int numberOnDice) {
         this.position +=numberOnDice;
-        return this.position;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

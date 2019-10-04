@@ -3,30 +3,38 @@ package game;
 public class Player {
     private final Token token;
     private Yard yard;
-    private int  numberOfTokenOut = 0;
+    private int numberOfTokenOut = 0;
+
     public Player(Yard yard) {
         this.yard = yard;
-        this.token= yard.getToken();
+        this.token = yard.getToken();
     }
 
-    public void play(Dice dice) {
+    public boolean play(Dice dice) {
         int numberOnDice = dice.roll();
-        if(numberOnDice == 1 && numberOfTokenOut ==0){
+        if (numberOnDice == 1 && numberOfTokenOut == 0) {
             moveATokenOut();
+            return true;
         }
-        if(numberOfTokenOut>0){
-            moveAToken(numberOnDice);
-        }
+        return moveAToken(numberOnDice);
     }
 
-    private void moveAToken(int numberOnDice) {
-        int position =token.setPosition(numberOnDice);
-        System.out.println(position);
+    private boolean moveAToken(int numberOnDice) {
+        int position = token.getPosition();
+        if (position + numberOnDice > yard.getEndingPoint()) {
+            System.out.println("yaha aya hai tu");
+        } else {
+            token.setPosition(numberOnDice);
+            if (token.getPosition() == yard.getEndingPoint()) {
+                System.out.println(yard.getColor());
+                return false;
+            }
+        }
+        return true;
     }
 
     private void moveATokenOut() {
-        int position =token.place(yard.getStartingPoint());
-        System.out.println(position);
+        token.place(yard.getStartingPoint());
         numberOfTokenOut++;
     }
 }

@@ -6,6 +6,8 @@ public class Game {
     private final Board board;
     private final List<Player> players;
     private int currentPlayerIndex;
+    boolean result = true;
+
     public Game(Board board, List<Player> players) {
         this.board = board;
         this.players = players;
@@ -13,13 +15,13 @@ public class Game {
     }
 
     public boolean isRunning() {
-        return true;
+        return result;
     }
 
     public void play() {
 
         Player currentPlayer = players.get(currentPlayerIndex);
-        currentPlayer.play(board.getDice());
+        this.result = currentPlayer.play(board.getDice());
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
     }
 }
