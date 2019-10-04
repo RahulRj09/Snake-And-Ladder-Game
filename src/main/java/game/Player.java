@@ -22,7 +22,7 @@ public class Player {
     private boolean moveAToken(int numberOnDice) {
         int position = token.getPosition();
         if (position + numberOnDice > yard.getEndingPoint()) {
-            System.out.println("yaha aya hai tu");
+
         } else {
             token.setPosition(numberOnDice);
             if (token.getPosition() == yard.getEndingPoint()) {
