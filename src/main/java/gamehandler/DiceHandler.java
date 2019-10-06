@@ -14,14 +14,14 @@ import java.util.List;
 public class DiceHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
+        int numberOnDice = new Dice().roll();
         String emailId = exchange.getRequestURI().getQuery();
         List<String> emailIdA = Arrays.asList(emailId.split("="));
-        System.out.println(emailIdA.get(1));
         DiceDatabaseHelper diceDatabaseHelper = new DiceDatabaseHelper();
-        diceDatabaseHelper.insert();
-        JSONObject numberOnDice = new JSONObject();
-        numberOnDice.put("dice", new Dice().roll());
-        String response = numberOnDice.toString();
+        diceDatabaseHelper.insert(emailIdA.get(1), numberOnDice);
+        JSONObject numberrOnDice = new JSONObject();
+        numberrOnDice.put("dice", numberOnDice);
+        String response = numberrOnDice.toString();
         exchange.getResponseHeaders().set("Content-Type", "appication/json");
         exchange.sendResponseHeaders(200, response.length());
         OutputStream os = exchange.getResponseBody();
