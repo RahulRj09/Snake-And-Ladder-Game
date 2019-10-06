@@ -18,6 +18,7 @@ public class DiceHandler implements HttpHandler {
         List<String> emailIdA = Arrays.asList(emailId.split("="));
         System.out.println(emailIdA.get(1));
         DiceDatabaseHelper diceDatabaseHelper = new DiceDatabaseHelper();
+        diceDatabaseHelper.insert();
         JSONObject numberOnDice = new JSONObject();
         numberOnDice.put("dice", new Dice().roll());
         String response = numberOnDice.toString();
