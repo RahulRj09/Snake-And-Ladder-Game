@@ -6,6 +6,7 @@ import authentication.RegistrationHandler;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
+import gamehandler.DiceHandler;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
@@ -23,6 +24,7 @@ public class Server {
         server.createContext("/registration", new RegistrationHandler());
         server.createContext("/getProfile", new ProfileHandler());
         server.createContext("/login", new LoginHandler());
+        server.createContext("/getNumberOnDice", new DiceHandler());
         server.setExecutor(null);
         server.start();
     }
