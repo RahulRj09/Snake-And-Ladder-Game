@@ -13,11 +13,25 @@
 
                 });
          }
+
     </script>
+
 </head>
 <body>
 <div class="header" id="myHeader">
     <h2></h2>
 </div>
+<button type="button" id="dice">Dice</button>
+<p></p>
+<script>
+        $('#dice').click(function(){
+        $.emailId = localStorage.getItem("emailId");
+        console.log($.emailId);
+            $.get("/getNumberOnDice?emailId="+$.emailId, function(data, status){
+                    console.log(data)
+                    $('p').append(data.dice);
+                });
+            });
+    </script>
 </body>
 </html>
