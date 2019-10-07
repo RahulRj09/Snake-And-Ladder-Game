@@ -6,14 +6,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
         $(window).on("load", GetAllProperties);
-         function GetAllProperties() {
-             $.emailId = localStorage.getItem("emailId");
-             $.get("/getProfile?emailId="+$.emailId, function(data, status){
-             $('h2').append(data.Profile[0].name)
-
-                });
-         }
-
+            function GetAllProperties() {
+	            $.emailId = localStorage.getItem("emailId");
+	            $.get("/getProfile?emailId=" + $.emailId, function (data, status) {
+		            $('h2').append(data.Profile[0].name)
+	            });
+            }
     </script>
 
 </head>
