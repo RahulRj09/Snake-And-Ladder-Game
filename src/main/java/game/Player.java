@@ -26,7 +26,6 @@ public class Player {
         } else {
             token.setPosition(numberOnDice);
             if (token.getPosition() == yard.getEndingPoint()) {
-                System.out.println(yard.getColor());
                 return false;
             }
         }
