@@ -29,7 +29,7 @@
         console.log($.emailId);
             $.get("/getNumberOnDice?emailId="+$.emailId, function(data, status){
                     console.log(data)
-                    $('p').append(data.dice);
+                    $('p').append(data.position);
                 });
             });
     </script>

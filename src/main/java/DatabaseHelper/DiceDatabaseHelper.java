@@ -39,11 +39,15 @@ public class DiceDatabaseHelper {
 
     public JSONObject getCurrentPosition(String emailId) {
         JSONObject currentPosition = new JSONObject();
-        String sql = "SELECT * FROM user WHERE emailId = '" + emailId + "'";
+        System.out.println(emailId);
+        String selectQuery = "SELECT * FROM gameCurrentState WHERE emailId = '" + emailId + "'";
         try (Connection conn = databaseConnection.connect();
-             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+             PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            currentPosition.put("position", resultSet.getString("position"));
+            while (resultSet.next()) {
+                currentPosition.put("position", resultSet.getInt("position"));
+            }
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

@@ -19,10 +19,8 @@ public class DiceHandler implements HttpHandler {
         List<String> emailIdA = Arrays.asList(emailId.split("="));
         DiceDatabaseHelper diceDatabaseHelper = new DiceDatabaseHelper();
         diceDatabaseHelper.insert(emailIdA.get(1), numberOnDice);
-        JSONObject numberrOnDice = new JSONObject();
-        numberrOnDice.put("dice", numberOnDice);
-        diceDatabaseHelper.getCurrentPosition(emailId);
-        String response = numberrOnDice.toString();
+        JSONObject res = diceDatabaseHelper.getCurrentPosition(emailIdA.get(1));
+        String response = res.toString();
         exchange.getResponseHeaders().set("Content-Type", "appication/json");
         exchange.sendResponseHeaders(200, response.length());
         OutputStream os = exchange.getResponseBody();

@@ -10,11 +10,11 @@ public class GameRunner {
         List<Yard> yards = new ArrayList<>();
         yards.add(red);
         yards.add(green);
-        Player player = new Player(red);
-        Player player1 = new Player(green);
+        Player rahul = new Player(red);
+        Player nitesh = new Player(green);
         List<Player> players = new ArrayList<>();
-        players.add(player);
-        players.add(player1);
+        players.add(rahul);
+        players.add(nitesh);
         Dice dice = new Dice();
         Board board = new Board(yards, dice);
         Game game = new Game(board, players);
