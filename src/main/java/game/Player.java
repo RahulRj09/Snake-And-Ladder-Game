@@ -21,11 +21,10 @@ public class Player {
 
     private boolean moveAToken(int numberOnDice) {
         int position = token.getPosition();
-        if (position + numberOnDice > yard.getEndingPoint()) {
-
-        } else {
+        if (position + numberOnDice <= yard.getEndingPoint()) {
             token.setPosition(numberOnDice);
             if (token.getPosition() == yard.getEndingPoint()) {
+                System.out.println(yard.getColor());
                 return false;
             }
         }
