@@ -39,7 +39,6 @@ public class DiceDatabaseHelper {
 
     public JSONObject getCurrentPosition(String emailId) {
         JSONObject currentPosition = new JSONObject();
-        System.out.println(emailId);
         String selectQuery = "SELECT * FROM gameCurrentState WHERE emailId = '" + emailId + "'";
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {
