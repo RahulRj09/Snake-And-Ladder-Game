@@ -20,6 +20,10 @@ public class DiceHandler implements HttpHandler {
         DiceDatabaseHelper diceDatabaseHelper = new DiceDatabaseHelper();
         diceDatabaseHelper.insert(emailIdA.get(1), numberOnDice);
         JSONObject res = diceDatabaseHelper.getCurrentPosition(emailIdA.get(1));
+        if(res.get("position").equals(100)){
+            diceDatabaseHelper.tableTruncate();
+            System.out.println(res.get("position"));
+        }
         String response = res.toString();
         exchange.getResponseHeaders().set("Content-Type", "appication/json");
         exchange.sendResponseHeaders(200, response.length());
@@ -28,3 +32,5 @@ public class DiceHandler implements HttpHandler {
         os.close();
     }
 }
+
+//    truncate gameCurrentState;

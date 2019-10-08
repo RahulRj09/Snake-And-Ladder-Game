@@ -53,4 +53,7 @@ public class DiceDatabaseHelper {
         return currentPosition;
     }
 
+    public void tableTruncate() {
+
+    }
 }
