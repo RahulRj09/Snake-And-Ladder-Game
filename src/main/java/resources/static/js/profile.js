@@ -1,4 +1,4 @@
- $(window).on("load", GetAllProperties);
+   $(window).on("load", GetAllProperties);
             function GetAllProperties() {
 	            $.emailId = localStorage.getItem("emailId");
 	            $.get("/getProfile?emailId=" + $.emailId, function (data, status) {
