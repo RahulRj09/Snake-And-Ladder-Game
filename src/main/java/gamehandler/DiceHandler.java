@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,8 +21,13 @@ public class DiceHandler implements HttpHandler {
         DiceDatabaseHelper diceDatabaseHelper = new DiceDatabaseHelper();
         diceDatabaseHelper.insert(emailIdA.get(1), numberOnDice);
         JSONObject res = diceDatabaseHelper.getCurrentPosition(emailIdA.get(1));
-        if(res.get("position").equals(100)){
-            diceDatabaseHelper.tableTruncate();
+        int position = (int) res.get("position");
+        if(position>=100){
+            try {
+                diceDatabaseHelper.tableTruncate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             System.out.println(res.get("position"));
         }
         String response = res.toString();
@@ -32,5 +38,3 @@ public class DiceHandler implements HttpHandler {
         os.close();
     }
 }
-
-//    truncate gameCurrentState;

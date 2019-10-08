@@ -3,10 +3,7 @@ package DatabaseHelper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DiceDatabaseHelper {
     DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -53,7 +50,9 @@ public class DiceDatabaseHelper {
         return currentPosition;
     }
 
-    public void tableTruncate() {
-
+    public void tableTruncate() throws SQLException {
+        Connection conn = databaseConnection.connect();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("TRUNCATE gameCurrentState");
     }
 }
