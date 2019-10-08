@@ -15,7 +15,7 @@ public class ProfileDatabaseHelper {
         JSONObject userDetails = new JSONObject();
 
         JSONArray userDetailsArray = new JSONArray();
-        String sql = "SELECT * FROM user WHERE emailId = '" + emailId + "'";
+        String sql = "SELECT * FROM users WHERE emailId = '" + emailId + "'";
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             ResultSet resultSet = preparedStatement.executeQuery();

@@ -8,7 +8,7 @@ public class RegistrationDatabaseHelper {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public void insert(String name, String emailId, String password) {
-        String sql = "insert into user(name,emailId,password) VALUES(?,?,?)";
+        String sql = "insert into users(name,emailId,password) VALUES(?,?,?)";
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.setString(1, name);
