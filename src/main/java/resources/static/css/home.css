@@ -41,3 +41,15 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+#myBtn {
+   float: right;
+   color: #f1f1f1;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-size:24px;
+ }

@@ -23,6 +23,9 @@ public class ProfileDatabaseHelper {
                 JSONObject details = new JSONObject();
                 details.put("name", resultSet.getString("name"));
                 details.put("email", resultSet.getString("emailId"));
+                details.put("win", resultSet.getString("win"));
+                details.put("loss", resultSet.getString("loss"));
+                details.put("total", resultSet.getString("total"));
                 userDetailsArray.add(details);
             }
             userDetails.put("Profile", userDetailsArray);
