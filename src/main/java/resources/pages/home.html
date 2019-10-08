@@ -3,20 +3,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="../static/css/home.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $(window).on("load", GetAllProperties);
-            function GetAllProperties() {
-	            $.emailId = localStorage.getItem("emailId");
-	            $.get("/getProfile?emailId=" + $.emailId, function (data, status) {
-	                if(data){
-		                $('h2').append(data.Profile[0].name)
-		            }else{
-		                 $('h2').append("User not found")
-		            }
-	            });
-            }
-
-    </script>
+    <script src="../static/js/profile.js"></script>
 
 </head>
 <body>
