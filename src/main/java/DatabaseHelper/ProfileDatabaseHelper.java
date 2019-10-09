@@ -37,12 +37,25 @@ public class ProfileDatabaseHelper {
 
     public void updateTotalPlayedGames(String emailId) {
         String sql = "SELECT * FROM users WHERE emailId = '" + emailId + "'";
-        try(Connection connection = databaseConnection.connect();
-        PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+        try (Connection connection = databaseConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            System.out.println(resultSet);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    public void updateWinningGames(String emailId) {
+        String sql = "SELECT * FROM users WHERE emailId = '" + emailId + "'";
+        try (Connection connection = databaseConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            System.out.println(resultSet);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

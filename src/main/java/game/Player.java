@@ -1,5 +1,6 @@
 package game;
 
+import DatabaseHelper.ProfileDatabaseHelper;
 import DatabaseHelper.TokenDatabaseHelper;
 
 import java.sql.SQLException;
@@ -34,7 +35,8 @@ public class Player {
             if (token.getPosition(this.emailId) == yard.getEndingPoint()) {
                 TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
                 tokenDatabaseHelper.tableTruncate();
-                if(this.emailId.equals("compuetr@gmail.com")){
+                ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
+                if(this.emailId.equals("rahul18@navgurukul.org")){
 
                 }
                 System.out.println(this.emailId);
