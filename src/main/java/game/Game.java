@@ -1,5 +1,6 @@
 package game;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class Game {
@@ -18,7 +19,7 @@ public class Game {
         return result;
     }
 
-    public void play() {
+    public void play() throws SQLException {
 
         Player currentPlayer = players.get(currentPlayerIndex);
         this.result = currentPlayer.play(board.getDice());

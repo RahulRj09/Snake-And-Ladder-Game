@@ -1,7 +1,8 @@
 package game;
 
 import DatabaseHelper.DiceDatabaseHelper;
-import org.json.simple.JSONObject;
+
+import java.sql.SQLException;
 
 public class Player {
     private final Token token;
@@ -15,7 +16,7 @@ public class Player {
         this.emailId = emailId;
     }
 
-    public boolean play(Dice dice) {
+    public boolean play(Dice dice) throws SQLException {
         int numberOnDice = dice.roll();
         if (numberOnDice == 1 && numberOfTokenOut == 0) {
             moveATokenOut();
@@ -24,15 +25,13 @@ public class Player {
         return moveAToken(numberOnDice);
     }
 
-    private boolean moveAToken(int numberOnDice) {
+    private boolean moveAToken(int numberOnDice) throws SQLException {
         int position = token.getPosition(this.emailId);
         if (position + numberOnDice <= yard.getEndingPoint()) {
-            token.setPosition(numberOnDice);
-            DiceDatabaseHelper diceDatabaseHelper = new DiceDatabaseHelper();
-            diceDatabaseHelper.updatePosition(this.emailId, position+numberOnDice);
-            JSONObject res = diceDatabaseHelper.getCurrentPosition(this.emailId);
-            System.out.println(res.toString());
+            token.setPosition(this.emailId,numberOnDice);
             if (token.getPosition(this.emailId) == yard.getEndingPoint()) {
+                DiceDatabaseHelper diceDatabaseHelper = new DiceDatabaseHelper();
+                diceDatabaseHelper.tableTruncate();
                 System.out.println(this.emailId);
                 return false;
             }

@@ -1,10 +1,11 @@
 package game;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameRunner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Yard green = new Yard(new Token(), "green");
         Yard red = new Yard(new Token(), "red");
         List<Yard> yards = new ArrayList<>();

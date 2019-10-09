@@ -14,21 +14,13 @@ public class DiceDatabaseHelper {
              PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                int previousPosition = resultSet.getInt("position");
                 String updateQuery = "UPDATE gameCurrentState SET position=? WHERE emailId=?";
                 PreparedStatement preparedStatement1 = conn.prepareStatement(updateQuery);
                 preparedStatement1.setInt(1, position);
                 preparedStatement1.setString(2, emailId);
                 preparedStatement1.executeUpdate();
 
-            } else {
-                String insertQuery = "insert into gameCurrentState(emailId,position) VALUES(?,?)";
-                PreparedStatement preparedStatement1 = conn.prepareStatement(insertQuery);
-                preparedStatement1.setString(1, emailId);
-                preparedStatement1.setInt(2, position);
-                preparedStatement1.executeUpdate();
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -56,7 +48,15 @@ public class DiceDatabaseHelper {
         statement.executeUpdate("TRUNCATE gameCurrentState");
     }
 
-    public void insert(String emailId, int startingPoint) {
-
+    public void insert(String emailId, int position) {
+        String insertQuery = "insert into gameCurrentState(emailId,position) VALUES(?,?)";
+        try (Connection conn = databaseConnection.connect();
+             PreparedStatement preparedStatement = conn.prepareStatement(insertQuery)) {
+            preparedStatement.setString(1, emailId);
+            preparedStatement.setInt(2, position);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
