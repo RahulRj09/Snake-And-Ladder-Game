@@ -23,7 +23,7 @@ public class TokenDatabaseHelper {
 
     public JSONObject getCurrentPosition(String emailId) {
         JSONObject currentPosition = new JSONObject();
-        String selectQuery = "SELECT * FROM gameCurrentState WHERE emailId = '" + emailId + "'";
+        String selectQuery = String.format("SELECT * FROM gameCurrentState WHERE emailId = '%s'", emailId);
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {
             ResultSet resultSet = preparedStatement.executeQuery();

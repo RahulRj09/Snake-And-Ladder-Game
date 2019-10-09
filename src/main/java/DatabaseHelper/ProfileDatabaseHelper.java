@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@SuppressWarnings("unchecked")
 public class ProfileDatabaseHelper {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
@@ -83,7 +84,7 @@ public class ProfileDatabaseHelper {
                 int loss = resultSet.getInt("loss");
                 String updateQuery = "UPDATE users SET total=? WHERE emailId=?";
                 PreparedStatement preparedStatement1 = connection.prepareStatement(updateQuery);
-                preparedStatement1.setInt(1, win+loss);
+                preparedStatement1.setInt(1, win + loss);
                 preparedStatement1.setString(2, loggedUserEmailId);
                 preparedStatement1.executeUpdate();
             }

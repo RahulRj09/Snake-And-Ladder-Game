@@ -9,7 +9,7 @@ public class LoginDatabaseHelper {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public boolean checkEmailForLogin(String emailId, String password) throws SQLException {
-        String sql = "SELECT emailId, password FROM users WHERE emailId = '" + emailId + "' and password = '" + password + "'";
+        String sql = String.format("SELECT emailId, password FROM users WHERE emailId = '%s' and password = '%s'", emailId, password);
         try (
                 Connection conn = databaseConnection.connect();
                 PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
