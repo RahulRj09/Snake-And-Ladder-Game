@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameRunner {
+public class GameHandler {
     public static void main(String[] args) throws SQLException {
         Yard green = new Yard(new Token(), "green");
         Yard red = new Yard(new Token(), "red");
