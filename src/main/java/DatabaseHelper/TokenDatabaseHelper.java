@@ -4,7 +4,7 @@ import org.json.simple.JSONObject;
 
 import java.sql.*;
 
-public class DiceDatabaseHelper {
+public class TokenDatabaseHelper {
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
 

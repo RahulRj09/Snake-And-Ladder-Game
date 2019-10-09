@@ -1,6 +1,6 @@
 package game;
 
-import DatabaseHelper.DiceDatabaseHelper;
+import DatabaseHelper.TokenDatabaseHelper;
 
 import java.sql.SQLException;
 
@@ -30,8 +30,8 @@ public class Player {
         if (position + numberOnDice <= yard.getEndingPoint()) {
             token.setPosition(this.emailId,numberOnDice);
             if (token.getPosition(this.emailId) == yard.getEndingPoint()) {
-                DiceDatabaseHelper diceDatabaseHelper = new DiceDatabaseHelper();
-                diceDatabaseHelper.tableTruncate();
+                TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
+                tokenDatabaseHelper.tableTruncate();
                 System.out.println(this.emailId);
                 return false;
             }

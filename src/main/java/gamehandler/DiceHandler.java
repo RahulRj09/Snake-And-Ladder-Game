@@ -1,6 +1,6 @@
 package gamehandler;
 
-import DatabaseHelper.DiceDatabaseHelper;
+import DatabaseHelper.TokenDatabaseHelper;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import game.Dice;
@@ -18,13 +18,13 @@ public class DiceHandler implements HttpHandler {
         int numberOnDice = new Dice().roll();
         String emailId = exchange.getRequestURI().getQuery();
         List<String> emailIdA = Arrays.asList(emailId.split("="));
-        DiceDatabaseHelper diceDatabaseHelper = new DiceDatabaseHelper();
-        diceDatabaseHelper.updatePosition(emailIdA.get(1), numberOnDice);
-        JSONObject res = diceDatabaseHelper.getCurrentPosition(emailIdA.get(1));
+        TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
+        tokenDatabaseHelper.updatePosition(emailIdA.get(1), numberOnDice);
+        JSONObject res = tokenDatabaseHelper.getCurrentPosition(emailIdA.get(1));
         int position = (int) res.get("position");
         if(position>=100){
             try {
-                diceDatabaseHelper.tableTruncate();
+                tokenDatabaseHelper.tableTruncate();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

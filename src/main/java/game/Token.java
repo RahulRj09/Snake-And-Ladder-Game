@@ -1,18 +1,18 @@
 package game;
 
-import DatabaseHelper.DiceDatabaseHelper;
+import DatabaseHelper.TokenDatabaseHelper;
 
 public class Token {
     private int position = -1;
-    private DiceDatabaseHelper diceDatabaseHelper = new DiceDatabaseHelper();
+    private TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
     public void place(String emailId, int startingPoint) {
-        diceDatabaseHelper.insert(emailId, startingPoint);
+        tokenDatabaseHelper.insert(emailId, startingPoint);
         this.position = startingPoint;
     }
 
     public void setPosition(String emailId, int numberOnDice) {
         this.position +=numberOnDice;
-        diceDatabaseHelper.updatePosition(emailId, this.position);
+        tokenDatabaseHelper.updatePosition(emailId, this.position);
     }
 
     public int getPosition(String emailId) {
