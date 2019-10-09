@@ -54,3 +54,8 @@
     outline: none;
     font-size: 24px;
 }
+
+img {
+    height: 500px;
+    margin-left: 450px;
+}
