@@ -3,7 +3,10 @@ package game;
 import DatabaseHelper.ProfileDatabaseHelper;
 import DatabaseHelper.TokenDatabaseHelper;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Player {
     private final Token token;
@@ -17,7 +20,7 @@ public class Player {
         this.emailId = emailId;
     }
 
-    public boolean play(Dice dice) throws SQLException {
+    public boolean play(Dice dice) throws SQLException, FileNotFoundException {
         int numberOnDice = dice.roll();
         if (numberOnDice == 1 && !isTokenOut()) {
             moveATokenOut();
@@ -28,7 +31,7 @@ public class Player {
         return true;
     }
 
-    private boolean moveAToken(int numberOnDice) throws SQLException {
+    private boolean moveAToken(int numberOnDice) throws SQLException, FileNotFoundException {
         int position = token.getPosition(getEmailId());
         if (position + numberOnDice <= yard.getEndingPoint()) {
             token.setPosition(getEmailId(), numberOnDice);
@@ -36,14 +39,22 @@ public class Player {
                 TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
                 tokenDatabaseHelper.tableTruncate();
                 ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
-                if (getEmailId().equals("rahul18@navgurukul.org")) {
-                    profileDatabaseHelper.updateWinningGames(getEmailId());
+                if (!getEmailId().equals(getLoggedUserEmailId())) {
+                    profileDatabaseHelper.updateLostGames(getLoggedUserEmailId());
+                    return false;
                 }
-                profileDatabaseHelper.updateLostGames("rahul18@navgurukul.org");
+                profileDatabaseHelper.updateWinningGames(getEmailId());
                 return false;
             }
         }
         return true;
+    }
+
+    private String getLoggedUserEmailId() throws FileNotFoundException {
+        File file = new File("/Users/rahul.joshi/SnakeAndLadderGame/src/main/java/resources/static/email.txt");
+        Scanner sc = new Scanner(file);
+        String input = String.valueOf(sc.next());
+        return input;
     }
 
     private void moveATokenOut() {

@@ -24,7 +24,7 @@ public class GameHandler implements HttpHandler {
         }
     }
 
-    public void play() throws SQLException {
+    public void play() throws SQLException, FileNotFoundException {
         Yard green = new Yard(new Token(), "green");
         Yard red = new Yard(new Token(), "red");
         List<Yard> yards = new ArrayList<>();
@@ -46,7 +46,6 @@ public class GameHandler implements HttpHandler {
 
 
     public String getEmailId() {
-
         return emailId;
     }
 

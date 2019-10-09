@@ -1,5 +1,6 @@
 package game;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Game {
         return result;
     }
 
-    public void play() throws SQLException {
+    public void play() throws SQLException, FileNotFoundException {
 
         Player currentPlayer = players.get(currentPlayerIndex);
         this.result = currentPlayer.play(board.getDice());
