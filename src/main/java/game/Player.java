@@ -13,6 +13,7 @@ public class Player {
     private Yard yard;
     private boolean tokenOut = false;
     private String emailId;
+    private ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
 
     public Player(Yard yard, String emailId) {
         this.yard = yard;
@@ -38,12 +39,14 @@ public class Player {
             if (token.getPosition(getEmailId()) == yard.getEndingPoint()) {
                 TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
                 tokenDatabaseHelper.tableTruncate();
-                ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
+
                 if (!getEmailId().equals(getLoggedUserEmailId())) {
                     profileDatabaseHelper.updateLostGames(getLoggedUserEmailId());
-                    return false;
                 }
-                profileDatabaseHelper.updateWinningGames(getEmailId());
+                if (getEmailId().equals(getLoggedUserEmailId())) {
+                    profileDatabaseHelper.updateWinningGames(getEmailId());
+                }
+                profileDatabaseHelper.totalPlayedGame(getLoggedUserEmailId());
                 return false;
             }
         }

@@ -72,4 +72,7 @@ public class ProfileDatabaseHelper {
             e.printStackTrace();
         }
     }
+
+    public void totalPlayedGame(String loggedUserEmailId) {
+    }
 }
