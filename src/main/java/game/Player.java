@@ -18,7 +18,7 @@ public class Player {
 
     public boolean play(Dice dice) throws SQLException {
         int numberOnDice = dice.roll();
-        if (numberOnDice == 1 && isTokenOut()) {
+        if (numberOnDice == 1 && !isTokenOut()) {
             moveATokenOut();
             return true;
         }else if(isTokenOut()){
