@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Player {
     private final Token token;
     private Yard yard;
-    private int numberOfTokenOut = 0;
+    private boolean numberOfTokenOut = false;
     String emailId;
 
     public Player(Yard yard, String  emailId) {
@@ -18,10 +18,10 @@ public class Player {
 
     public boolean play(Dice dice) throws SQLException {
         int numberOnDice = dice.roll();
-        if (numberOnDice == 1 && numberOfTokenOut == 0) {
+        if (numberOnDice == 1 && !numberOfTokenOut) {
             moveATokenOut();
             return true;
-        }else if(numberOfTokenOut==1){
+        }else if(numberOfTokenOut){
             return moveAToken(numberOnDice);
         }
         return true;
@@ -43,6 +43,10 @@ public class Player {
 
     private void moveATokenOut() {
         token.place(this.emailId,yard.getStartingPoint());
-        numberOfTokenOut++;
+        numberOfTokenOut = true;
+    }
+
+    public boolean isTokenOut() {
+        return numberOfTokenOut;
     }
 }
