@@ -7,6 +7,7 @@ import java.sql.*;
 public class DiceDatabaseHelper {
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
+
     public void updatePosition(String emailId, int position) {
         String selectQuery = "SELECT * FROM gameCurrentState WHERE emailId = '" + emailId + "'";
         try (Connection conn = databaseConnection.connect();
@@ -14,7 +15,7 @@ public class DiceDatabaseHelper {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 int previousPosition = resultSet.getInt("position");
-                String updateQuery = "UPDATE gameCurrentState SET position=? WHERE emailId=?\n";
+                String updateQuery = "UPDATE gameCurrentState SET position=? WHERE emailId=?";
                 PreparedStatement preparedStatement1 = conn.prepareStatement(updateQuery);
                 preparedStatement1.setInt(1, position);
                 preparedStatement1.setString(2, emailId);
@@ -53,5 +54,9 @@ public class DiceDatabaseHelper {
         Connection conn = databaseConnection.connect();
         Statement statement = conn.createStatement();
         statement.executeUpdate("TRUNCATE gameCurrentState");
+    }
+
+    public void insert(String emailId, int startingPoint) {
+
     }
 }

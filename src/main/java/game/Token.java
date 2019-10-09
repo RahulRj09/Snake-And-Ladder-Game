@@ -7,7 +7,7 @@ public class Token {
 
     public void place(String emailId, int startingPoint) {
         DiceDatabaseHelper diceDatabaseHelper = new DiceDatabaseHelper();
-        diceDatabaseHelper.updatePosition(emailId, startingPoint);
+        diceDatabaseHelper.insert(emailId, startingPoint);
         this.position = startingPoint;
     }
 
