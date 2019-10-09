@@ -1,6 +1,5 @@
 package DatabaseHelper;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.sql.*;
@@ -15,7 +14,7 @@ public class DiceDatabaseHelper {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 int previousPosition = resultSet.getInt("position");
-                String updateQuery = "UPDATE gameCurrentState SET position=? WHERE emailId=?";
+                String updateQuery = "UPDATE gameCurrentState SET position=? WHERE emailId=?\n";
                 PreparedStatement preparedStatement1 = conn.prepareStatement(updateQuery);
                 preparedStatement1.setInt(1, position + previousPosition);
                 preparedStatement1.setString(2, emailId);
