@@ -24,7 +24,7 @@ public class Server {
         server.createContext("/registration", new RegistrationHandler());
         server.createContext("/getProfile", new ProfileHandler());
         server.createContext("/login", new LoginHandler());
-        server.createContext("/getNumberOnDice", new GameHandler());
+        server.createContext("/getCurrentPosition", new GameHandler());
         server.setExecutor(null);
         server.start();
     }

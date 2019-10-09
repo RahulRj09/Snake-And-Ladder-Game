@@ -1,7 +1,9 @@
 package game;
 
+import DatabaseHelper.TokenDatabaseHelper;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import org.json.simple.JSONObject;
 
 import java.io.*;
 import java.sql.SQLException;
@@ -11,20 +13,29 @@ import java.util.List;
 
 public class GameHandler implements HttpHandler {
     private String emailId;
+    TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
+        System.out.println(exchange.getRequestMethod());
         String emailId = exchange.getRequestURI().getQuery();
         List<String> emailIdA = Arrays.asList(emailId.split("="));
         setEmailId(emailIdA.get(1));
         try {
-            play();
+            JSONObject jsonObject= play();
+            String response = jsonObject.toString();
+            exchange.getResponseHeaders().set("Content-Type", "appication/json");
+            exchange.sendResponseHeaders(200, response.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void play() throws SQLException, FileNotFoundException {
+    private JSONObject play() throws SQLException, FileNotFoundException {
+        JSONObject position = new JSONObject();
         Yard green = new Yard(new Token(), "green");
         Yard red = new Yard(new Token(), "red");
         List<Yard> yards = new ArrayList<>();
@@ -38,10 +49,12 @@ public class GameHandler implements HttpHandler {
         Dice dice = new Dice();
         Board board = new Board(yards, dice);
         Game game = new Game(board, players);
-        while (game.isRunning()) {
+        if (game.isRunning()) {
             game.play();
+            position = tokenDatabaseHelper.getCurrentPosition(getEmailId());
             game.isRunning();
         }
+        return position;
     }
 
 
