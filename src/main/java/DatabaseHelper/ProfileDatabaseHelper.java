@@ -53,4 +53,8 @@ public class ProfileDatabaseHelper {
             e.printStackTrace();
         }
     }
+
+    public void updateLossGames(String emailId) {
+
+    }
 }

@@ -10,14 +10,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameHandler implements HttpHandler {
-    String emailId;
+    private String emailId;
     public void play(String emailId) throws SQLException {
         Yard green = new Yard(new Token(), "green");
         Yard red = new Yard(new Token(), "red");
         List<Yard> yards = new ArrayList<>();
         yards.add(red);
         yards.add(green);
-        Player rahul = new Player(red,emailId);
+        Player rahul = new Player(red,getEmailId());
         Player nitesh = new Player(green,"compuetr@gmail.com");
         List<Player> players = new ArrayList<>();
         players.add(rahul);
