@@ -36,10 +36,10 @@ public class Player {
                 TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
                 tokenDatabaseHelper.tableTruncate();
                 ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
-                if(this.emailId.equals("rahul18@navgurukul.org")){
-                    profileDatabaseHelper.updateWinningGames(this.emailId);
-                    System.out.println(this.emailId);
+                if(this.emailId.equals("computer@gmail.com")){
+
                 }
+                profileDatabaseHelper.updateWinningGames(this.emailId);
                 return false;
             }
         }

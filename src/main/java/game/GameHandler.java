@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameHandler implements HttpHandler {
+    String emailId;
     public void play(String emailId) throws SQLException {
         Yard green = new Yard(new Token(), "green");
         Yard red = new Yard(new Token(), "red");
@@ -34,10 +35,15 @@ public class GameHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         String emailId = exchange.getRequestURI().getQuery();
         List<String> emailIdA = Arrays.asList(emailId.split("="));
+        this.emailId = emailIdA.get(1);
         try {
             play(emailIdA.get(1));
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getEmailId() {
+        return emailId;
     }
 }
