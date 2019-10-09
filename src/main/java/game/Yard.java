@@ -7,10 +7,10 @@ public class Yard {
     int endingPoint;
     String color;
 
-    public Yard(Token token, int startingPoint, int endingPoint, String color) {
+    public Yard(Token token, String color) {
         this.token = token;
-        this.startingPoint = startingPoint;
-        this.endingPoint = endingPoint;
+        this.startingPoint = 1;
+        this.endingPoint =100;
         this.color = color;
     }
 

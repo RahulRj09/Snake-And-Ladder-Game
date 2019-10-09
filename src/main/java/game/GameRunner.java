@@ -5,8 +5,8 @@ import java.util.List;
 
 public class GameRunner {
     public static void main(String[] args) {
-        RedYard red = new RedYard(new Token(), "red");
-        GreenYard green = new GreenYard(new Token(), "green");
+        Yard green = new Yard(new Token(), "green");
+        Yard red = new Yard(new Token(), "red");
         List<Yard> yards = new ArrayList<>();
         yards.add(red);
         yards.add(green);
