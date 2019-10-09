@@ -10,14 +10,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameHandler implements HttpHandler {
-    private String emailId;
+    private String emailId = "";
     public void play(String emailId) throws SQLException {
         Yard green = new Yard(new Token(), "green");
         Yard red = new Yard(new Token(), "red");
         List<Yard> yards = new ArrayList<>();
         yards.add(red);
         yards.add(green);
-        Player rahul = new Player(red,getEmailId());
+        Player rahul = new Player(red,emailId);
         Player nitesh = new Player(green,"compuetr@gmail.com");
         List<Player> players = new ArrayList<>();
         players.add(rahul);
@@ -35,7 +35,7 @@ public class GameHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         String emailId = exchange.getRequestURI().getQuery();
         List<String> emailIdA = Arrays.asList(emailId.split("="));
-        this.emailId = emailIdA.get(1);
+        setEmailId(emailIdA.get(1));
         try {
             play(emailIdA.get(1));
         } catch (SQLException e) {
@@ -45,5 +45,9 @@ public class GameHandler implements HttpHandler {
 
     public String getEmailId() {
         return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 }

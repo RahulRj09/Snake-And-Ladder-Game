@@ -10,8 +10,8 @@ public class Player {
     private Yard yard;
     private boolean tokenOut = false;
     String emailId;
-
-    public Player(Yard yard, String  emailId) {
+    private String loginUserEmailId;
+    public Player(Yard yard, String emailId) {
         this.yard = yard;
         this.token = yard.getToken();
         this.emailId = emailId;
@@ -22,7 +22,7 @@ public class Player {
         if (numberOnDice == 1 && !isTokenOut()) {
             moveATokenOut();
             return true;
-        }else if(isTokenOut()){
+        } else if (isTokenOut()) {
             return moveAToken(numberOnDice);
         }
         return true;
@@ -31,15 +31,15 @@ public class Player {
     private boolean moveAToken(int numberOnDice) throws SQLException {
         int position = token.getPosition(this.emailId);
         if (position + numberOnDice <= yard.getEndingPoint()) {
-            token.setPosition(this.emailId,numberOnDice);
+            token.setPosition(this.emailId, numberOnDice);
             if (token.getPosition(this.emailId) == yard.getEndingPoint()) {
                 TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
                 tokenDatabaseHelper.tableTruncate();
                 ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
-                if(this.emailId.equals("computer@gmail.com")){
-                    profileDatabaseHelper.updateLostGames(new GameHandler().getEmailId());
+                if (this.emailId.equals("rahul18@navgurukul.org")) {
+                    profileDatabaseHelper.updateWinningGames(this.emailId);
                 }
-                profileDatabaseHelper.updateWinningGames(new GameHandler().getEmailId());
+                profileDatabaseHelper.updateLostGames("rahul18@navgurukul.org");
                 return false;
             }
         }
@@ -47,11 +47,23 @@ public class Player {
     }
 
     private void moveATokenOut() {
-        token.place(this.emailId,yard.getStartingPoint());
+        token.place(this.emailId, yard.getStartingPoint());
         tokenOut = true;
     }
 
     public boolean isTokenOut() {
         return tokenOut;
+    }
+
+    public String getLoginUserEmailId() {
+        return loginUserEmailId;
+    }
+
+    public void setLoginUserEmailId(String loginUserEmailId) {
+        this.loginUserEmailId = loginUserEmailId;
+    }
+
+    public String getEmailId() {
+        return emailId;
     }
 }
