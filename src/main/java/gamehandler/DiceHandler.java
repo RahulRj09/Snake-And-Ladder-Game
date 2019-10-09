@@ -19,7 +19,7 @@ public class DiceHandler implements HttpHandler {
         String emailId = exchange.getRequestURI().getQuery();
         List<String> emailIdA = Arrays.asList(emailId.split("="));
         DiceDatabaseHelper diceDatabaseHelper = new DiceDatabaseHelper();
-        diceDatabaseHelper.insert(emailIdA.get(1), numberOnDice);
+        diceDatabaseHelper.updatePosition(emailIdA.get(1), numberOnDice);
         JSONObject res = diceDatabaseHelper.getCurrentPosition(emailIdA.get(1));
         int position = (int) res.get("position");
         if(position>=100){

@@ -10,8 +10,8 @@ public class GameRunner {
         List<Yard> yards = new ArrayList<>();
         yards.add(red);
         yards.add(green);
-        Player rahul = new Player(red);
-        Player nitesh = new Player(green);
+        Player rahul = new Player(red,"rahul@navgurukul.org");
+        Player nitesh = new Player(green,"compuetr@gmail.com");
         List<Player> players = new ArrayList<>();
         players.add(rahul);
         players.add(nitesh);
