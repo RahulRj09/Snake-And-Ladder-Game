@@ -9,20 +9,15 @@ public class TokenDatabaseHelper {
 
 
     public void updatePosition(String emailId, int position) {
-        String selectQuery = "SELECT * FROM gameCurrentState WHERE emailId = '" + emailId + "'";
+        String updateQuery = "UPDATE gameCurrentState SET position=? WHERE emailId=?";
         try (Connection conn = databaseConnection.connect();
-             PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                String updateQuery = "UPDATE gameCurrentState SET position=? WHERE emailId=?";
-                PreparedStatement preparedStatement1 = conn.prepareStatement(updateQuery);
-                preparedStatement1.setInt(1, position);
-                preparedStatement1.setString(2, emailId);
-                preparedStatement1.executeUpdate();
+             PreparedStatement preparedStatement = conn.prepareStatement(updateQuery)) {
+            preparedStatement.setInt(1, position);
+            preparedStatement.setString(2, emailId);
+            preparedStatement.executeUpdate();
 
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 

@@ -21,8 +21,10 @@ public class Player {
         if (numberOnDice == 1 && numberOfTokenOut == 0) {
             moveATokenOut();
             return true;
+        }else if(numberOfTokenOut==1){
+            return moveAToken(numberOnDice);
         }
-        return moveAToken(numberOnDice);
+        return true;
     }
 
     private boolean moveAToken(int numberOnDice) throws SQLException {
