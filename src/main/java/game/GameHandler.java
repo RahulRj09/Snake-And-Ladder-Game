@@ -1,17 +1,22 @@
 package game;
 
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class GameHandler {
-    public static void main(String[] args) throws SQLException {
+public class GameHandler implements HttpHandler {
+    public void play(String emailId) throws SQLException {
         Yard green = new Yard(new Token(), "green");
         Yard red = new Yard(new Token(), "red");
         List<Yard> yards = new ArrayList<>();
         yards.add(red);
         yards.add(green);
-        Player rahul = new Player(red,"rahul@navgurukul.org");
+        Player rahul = new Player(red,emailId);
         Player nitesh = new Player(green,"compuetr@gmail.com");
         List<Player> players = new ArrayList<>();
         players.add(rahul);
@@ -22,6 +27,17 @@ public class GameHandler {
         while (game.isRunning()) {
             game.play();
             game.isRunning();
+        }
+    }
+
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        String emailId = exchange.getRequestURI().getQuery();
+        List<String> emailIdA = Arrays.asList(emailId.split("="));
+        try {
+            play(emailIdA.get(1));
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

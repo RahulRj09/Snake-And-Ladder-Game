@@ -34,4 +34,15 @@ public class ProfileDatabaseHelper {
         }
         return userDetails;
     }
+
+    public void updateTotalPlayedGames(String emailId) {
+        String sql = "SELECT * FROM users WHERE emailId = '" + emailId + "'";
+        try(Connection connection = databaseConnection.connect();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

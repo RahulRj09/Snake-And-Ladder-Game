@@ -34,6 +34,9 @@ public class Player {
             if (token.getPosition(this.emailId) == yard.getEndingPoint()) {
                 TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
                 tokenDatabaseHelper.tableTruncate();
+                if(this.emailId.equals("compuetr@gmail.com")){
+
+                }
                 System.out.println(this.emailId);
                 return false;
             }
