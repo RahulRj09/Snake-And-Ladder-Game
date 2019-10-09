@@ -15,7 +15,7 @@ public class ProfileDatabaseHelper {
         JSONObject userDetails = new JSONObject();
 
         JSONArray userDetailsArray = new JSONArray();
-        String sql = "SELECT * FROM users WHERE emailId = '" + emailId + "'";
+        String sql = String.format("SELECT * FROM users WHERE emailId = '%s'", emailId);
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -36,7 +36,7 @@ public class ProfileDatabaseHelper {
     }
 
     public void updateWinningGames(String emailId) {
-        String sql = "SELECT * FROM users WHERE emailId = '" + emailId + "'";
+        String sql = String.format("SELECT * FROM users WHERE emailId = '%s'", emailId);
         try (Connection connection = databaseConnection.connect();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -74,5 +74,21 @@ public class ProfileDatabaseHelper {
     }
 
     public void totalPlayedGame(String loggedUserEmailId) {
+        String sql = String.format("SELECT * FROM users WHERE emailId = '%s'", loggedUserEmailId);
+        try (Connection connection = databaseConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                int win = resultSet.getInt("win");
+                int loss = resultSet.getInt("loss");
+                String updateQuery = "UPDATE users SET total=? WHERE emailId=?";
+                PreparedStatement preparedStatement1 = connection.prepareStatement(updateQuery);
+                preparedStatement1.setInt(1, win+loss);
+                preparedStatement1.setString(2, loggedUserEmailId);
+                preparedStatement1.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
