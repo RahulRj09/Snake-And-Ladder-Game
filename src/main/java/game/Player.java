@@ -9,8 +9,8 @@ public class Player {
     private final Token token;
     private Yard yard;
     private boolean tokenOut = false;
-    String emailId;
-    private String loginUserEmailId;
+    private String emailId;
+
     public Player(Yard yard, String emailId) {
         this.yard = yard;
         this.token = yard.getToken();
@@ -29,15 +29,15 @@ public class Player {
     }
 
     private boolean moveAToken(int numberOnDice) throws SQLException {
-        int position = token.getPosition(this.emailId);
+        int position = token.getPosition(getEmailId());
         if (position + numberOnDice <= yard.getEndingPoint()) {
-            token.setPosition(this.emailId, numberOnDice);
-            if (token.getPosition(this.emailId) == yard.getEndingPoint()) {
+            token.setPosition(getEmailId(), numberOnDice);
+            if (token.getPosition(getEmailId()) == yard.getEndingPoint()) {
                 TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
                 tokenDatabaseHelper.tableTruncate();
                 ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
-                if (this.emailId.equals("rahul18@navgurukul.org")) {
-                    profileDatabaseHelper.updateWinningGames(this.emailId);
+                if (getEmailId().equals("rahul18@navgurukul.org")) {
+                    profileDatabaseHelper.updateWinningGames(getEmailId());
                 }
                 profileDatabaseHelper.updateLostGames("rahul18@navgurukul.org");
                 return false;
@@ -47,7 +47,7 @@ public class Player {
     }
 
     private void moveATokenOut() {
-        token.place(this.emailId, yard.getStartingPoint());
+        token.place(getEmailId(), yard.getStartingPoint());
         tokenOut = true;
     }
 
@@ -55,15 +55,7 @@ public class Player {
         return tokenOut;
     }
 
-    public String getLoginUserEmailId() {
-        return loginUserEmailId;
-    }
-
-    public void setLoginUserEmailId(String loginUserEmailId) {
-        this.loginUserEmailId = loginUserEmailId;
-    }
-
     public String getEmailId() {
-        return emailId;
+        return this.emailId;
     }
 }

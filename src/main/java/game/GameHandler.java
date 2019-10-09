@@ -11,14 +11,27 @@ import java.util.List;
 
 public class GameHandler implements HttpHandler {
     private String emailId = "";
-    public void play(String emailId) throws SQLException {
+
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        String emailId = exchange.getRequestURI().getQuery();
+        List<String> emailIdA = Arrays.asList(emailId.split("="));
+        setEmailId(emailIdA.get(1));
+        try {
+            play();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void play() throws SQLException {
         Yard green = new Yard(new Token(), "green");
         Yard red = new Yard(new Token(), "red");
         List<Yard> yards = new ArrayList<>();
         yards.add(red);
         yards.add(green);
-        Player rahul = new Player(red,emailId);
-        Player nitesh = new Player(green,"compuetr@gmail.com");
+        Player rahul = new Player(red, getEmailId());
+        Player nitesh = new Player(green, "computer@gmail.com");
         List<Player> players = new ArrayList<>();
         players.add(rahul);
         players.add(nitesh);
@@ -31,23 +44,13 @@ public class GameHandler implements HttpHandler {
         }
     }
 
-    @Override
-    public void handle(HttpExchange exchange) throws IOException {
-        String emailId = exchange.getRequestURI().getQuery();
-        List<String> emailIdA = Arrays.asList(emailId.split("="));
-        setEmailId(emailIdA.get(1));
-        try {
-            play(emailIdA.get(1));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     public String getEmailId() {
         return emailId;
     }
 
-    public void setEmailId(String emailId) {
+    public void setEmailId(String emailId)
+    {
         this.emailId = emailId;
     }
 }
