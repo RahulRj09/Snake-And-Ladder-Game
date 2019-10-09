@@ -3,14 +3,14 @@ package game;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class GameHandler implements HttpHandler {
-    private String emailId = "";
+    private String emailId;
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
@@ -46,11 +46,17 @@ public class GameHandler implements HttpHandler {
 
 
     public String getEmailId() {
+
         return emailId;
     }
 
-    public void setEmailId(String emailId)
-    {
+    public void setEmailId(String emailId) throws IOException {
         this.emailId = emailId;
+        File file = new File("/Users/rahul.joshi/SnakeAndLadderGame/src/main/java/resources/static/email.txt");
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+            bw.write(emailId);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
