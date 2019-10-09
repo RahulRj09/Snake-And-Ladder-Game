@@ -56,7 +56,7 @@ public class ProfileDatabaseHelper {
     }
 
     public void updateLostGames(String emailId) {
-        String sql = "SELECT * FROM users WHERE emailId = '" + emailId + "'";
+        String sql = String.format("SELECT * FROM users WHERE emailId = '%s'", emailId);
         try (Connection connection = databaseConnection.connect();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             ResultSet resultSet = preparedStatement.executeQuery();
