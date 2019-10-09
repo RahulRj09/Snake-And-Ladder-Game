@@ -54,7 +54,22 @@ public class ProfileDatabaseHelper {
         }
     }
 
-    public void updateLossGames(String emailId) {
+    public void updateLostGames(String emailId) {
+        String sql = "SELECT * FROM users WHERE emailId = '" + emailId + "'";
+        try (Connection connection = databaseConnection.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                int loss = resultSet.getInt("loss");
+                String updateQuery = "UPDATE users SET loss=? WHERE emailId=?";
+                PreparedStatement preparedStatement1 = connection.prepareStatement(updateQuery);
+                preparedStatement1.setInt(1, loss + 1);
+                preparedStatement1.setString(2, emailId);
+                preparedStatement1.executeUpdate();
+            }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

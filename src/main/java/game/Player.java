@@ -37,7 +37,7 @@ public class Player {
                 tokenDatabaseHelper.tableTruncate();
                 ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
                 if(this.emailId.equals("computer@gmail.com")){
-                    profileDatabaseHelper.updateLossGames(emailId);
+                    profileDatabaseHelper.updateLostGames(new GameHandler().getEmailId());
                 }
                 profileDatabaseHelper.updateWinningGames(new GameHandler().getEmailId());
                 return false;
