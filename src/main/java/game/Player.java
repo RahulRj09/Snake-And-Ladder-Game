@@ -24,9 +24,9 @@ public class Player {
         TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
         int numberOnDice = dice.roll();
         boolean b = tokenDatabaseHelper.positionRowExistsOrNotForCurrentUser(getEmailId());
-        if (!b && numberOnDice ==1) {
-                moveATokenOut();
-                return true;
+        if (!b && numberOnDice == 1) {
+            moveATokenOut();
+            return true;
         } else if (b) {
             return moveAToken(numberOnDice);
         }
@@ -35,7 +35,7 @@ public class Player {
 
     private boolean moveAToken(int numberOnDice) throws SQLException, FileNotFoundException {
         int position = token.getPosition(getEmailId());
-        System.out.println(position+getEmailId());
+        System.out.println(position + getEmailId());
         if (position + numberOnDice <= yard.getEndingPoint()) {
             token.setPosition(getEmailId(), numberOnDice);
             if (token.getPosition(getEmailId()) == yard.getEndingPoint()) {
@@ -65,6 +65,7 @@ public class Player {
     private void moveATokenOut() {
         token.place(getEmailId(), yard.getStartingPoint());
     }
+
     public String getEmailId() {
         return this.emailId;
     }
