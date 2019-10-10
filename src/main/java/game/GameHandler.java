@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GameHandler implements HttpHandler {
     private String emailId;
-    TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
+    private TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
@@ -43,7 +43,8 @@ public class GameHandler implements HttpHandler {
         Dice dice = new Dice();
         Board board = new Board(yards, dice);
         Game game = new Game(board, players);
-        while (game.isRunning()) {
+
+       if (game.isRunning()) {
             game.play();
             position = tokenDatabaseHelper.getCurrentPosition(getEmailId());
             try {

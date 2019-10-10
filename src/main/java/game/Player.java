@@ -23,10 +23,11 @@ public class Player {
 
     public boolean play(Dice dice) throws SQLException, FileNotFoundException {
         int numberOnDice = dice.roll();
-        System.out.println(numberOnDice);
-        if (numberOnDice == 1 && !isTokenOut()) {
-            moveATokenOut();
-            return true;
+        if (!new TokenDatabaseHelper().positionRowExistsOrNotForCurrentUser(getLoggedUserEmailId())) {
+            if (numberOnDice == 1 && !isTokenOut()) {
+                moveATokenOut();
+                return true;
+            }
         } else if (isTokenOut()) {
             return moveAToken(numberOnDice);
         }

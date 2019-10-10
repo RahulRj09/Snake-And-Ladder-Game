@@ -20,7 +20,9 @@ public class PlayerTest {
         Dice dice = spy(new Dice());
         when(dice.roll()).thenReturn(1);
         rahul.play(dice);
-        JSONObject position  = new TokenDatabaseHelper().getCurrentPosition("hello1@gmail.com");
+        TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
+        JSONObject position  = tokenDatabaseHelper.getCurrentPosition("hello1@gmail.com");
+        tokenDatabaseHelper.tableTruncate();
         assertEquals(1, position.get("position"));
     }
 }

@@ -54,4 +54,9 @@ public class TokenDatabaseHelper {
             e.printStackTrace();
         }
     }
+
+
+    public boolean positionRowExistsOrNotForCurrentUser(String loggedUserEmailId) {
+        return true;
+    }
 }
