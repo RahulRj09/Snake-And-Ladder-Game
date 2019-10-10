@@ -1,5 +1,6 @@
 package DatabaseHelper;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.sql.*;
@@ -23,17 +24,24 @@ public class TokenDatabaseHelper {
 
     public JSONObject getCurrentPosition(String emailId) {
         JSONObject currentPosition = new JSONObject();
+        JSONObject currentPositionObject = new JSONObject();
+        JSONArray currentPositionArray = new JSONArray();
         String selectQuery = String.format("SELECT * FROM gameCurrentState WHERE emailId = '%s'", emailId);
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                JSONObject position = new JSONObject();
                 currentPosition.put("position", resultSet.getInt("position"));
+                position.put("position", resultSet.getInt("position"));
+                position.put("emailId",resultSet.getString("emailId"));
+                currentPositionArray.add(position);
             }
-
+            currentPositionObject.put("details",currentPositionArray);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        System.out.println(currentPositionObject.get("details"));
         return currentPosition;
     }
 

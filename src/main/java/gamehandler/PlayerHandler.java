@@ -27,7 +27,6 @@ public class PlayerHandler {
     }
 
     public void updateIndex(int index) {
-        System.out.println(index);
         String updateQuery = "UPDATE `currentIndex` SET `index`= ?";
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(updateQuery)) {

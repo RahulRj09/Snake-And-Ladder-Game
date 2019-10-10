@@ -35,7 +35,6 @@ public class Player {
 
     private boolean moveAToken(int numberOnDice) throws SQLException, FileNotFoundException {
         int position = token.getPosition(getEmailId());
-        System.out.println(position + getEmailId());
         if (position + numberOnDice <= yard.getEndingPoint()) {
             token.setPosition(getEmailId(), numberOnDice);
             if (token.getPosition(getEmailId()) == yard.getEndingPoint()) {
