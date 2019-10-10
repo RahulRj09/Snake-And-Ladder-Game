@@ -6,7 +6,7 @@ import authentication.RegistrationHandler;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
-import game.GameHandler;
+import gamehandler.GameHandler;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;

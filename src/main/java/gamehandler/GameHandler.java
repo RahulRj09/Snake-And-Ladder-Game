@@ -1,8 +1,9 @@
-package game;
+package gamehandler;
 
 import DatabaseHelper.TokenDatabaseHelper;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import game.*;
 import org.json.simple.JSONObject;
 
 import java.io.*;
