@@ -22,20 +22,14 @@ public class GameHandler implements HttpHandler {
         List<String> emailIdA = Arrays.asList(emailId.split("="));
         setEmailId(emailIdA.get(1));
         try {
-            JSONObject jsonObject= play();
-            String response = jsonObject.toString();
-            exchange.getResponseHeaders().set("Content-Type", "appication/json");
-            exchange.sendResponseHeaders(200, response.length());
-            OutputStream os = exchange.getResponseBody();
-            os.write(response.getBytes());
-            os.close();
+            play(exchange);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private JSONObject play() throws SQLException, FileNotFoundException {
-        JSONObject position = new JSONObject();
+    private void play(HttpExchange exchange) throws SQLException, FileNotFoundException {
+        JSONObject position;
         Yard green = new Yard(new Token(), "green");
         Yard red = new Yard(new Token(), "red");
         List<Yard> yards = new ArrayList<>();
@@ -49,12 +43,21 @@ public class GameHandler implements HttpHandler {
         Dice dice = new Dice();
         Board board = new Board(yards, dice);
         Game game = new Game(board, players);
-        if (game.isRunning()) {
+        while (game.isRunning()) {
             game.play();
             position = tokenDatabaseHelper.getCurrentPosition(getEmailId());
+            try {
+                String response = position.toString();
+                exchange.getResponseHeaders().set("Content-Type", "appication/json");
+                exchange.sendResponseHeaders(200, response.length());
+                OutputStream os = exchange.getResponseBody();
+                os.write(response.getBytes());
+                os.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             game.isRunning();
         }
-        return position;
     }
 
 
