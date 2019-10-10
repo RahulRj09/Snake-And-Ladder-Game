@@ -25,5 +25,18 @@ public class PlayerHandler {
         }
         return currentIndex;
     }
+
+    public void updateIndex(int index) {
+        System.out.println(index);
+        String updateQuery = "UPDATE `currentIndex` SET `index`= ?";
+        try (Connection conn = databaseConnection.connect();
+             PreparedStatement preparedStatement = conn.prepareStatement(updateQuery)) {
+            preparedStatement.setInt(1,index);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
 
