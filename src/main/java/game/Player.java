@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class Player {
     private final Token token;
     private Yard yard;
-    private boolean tokenOut = false;
     private String emailId;
     private ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
 
@@ -24,13 +23,11 @@ public class Player {
     public boolean play(Dice dice) throws SQLException, FileNotFoundException {
         TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
         int numberOnDice = dice.roll();
-        boolean b = tokenDatabaseHelper.positionRowExistsOrNotForCurrentUser(getLoggedUserEmailId());
-        if (!b) {
-            if (numberOnDice == 1 && !isTokenOut()) {
+        boolean b = tokenDatabaseHelper.positionRowExistsOrNotForCurrentUser(getEmailId());
+        if (!b && numberOnDice ==1) {
                 moveATokenOut();
                 return true;
-            }
-        } else if (isTokenOut()) {
+        } else if (b) {
             return moveAToken(numberOnDice);
         }
         return true;
@@ -38,6 +35,7 @@ public class Player {
 
     private boolean moveAToken(int numberOnDice) throws SQLException, FileNotFoundException {
         int position = token.getPosition(getEmailId());
+        System.out.println(position+getEmailId());
         if (position + numberOnDice <= yard.getEndingPoint()) {
             token.setPosition(getEmailId(), numberOnDice);
             if (token.getPosition(getEmailId()) == yard.getEndingPoint()) {
@@ -66,13 +64,7 @@ public class Player {
 
     private void moveATokenOut() {
         token.place(getEmailId(), yard.getStartingPoint());
-        tokenOut = true;
     }
-
-    public boolean isTokenOut() {
-        return tokenOut;
-    }
-
     public String getEmailId() {
         return this.emailId;
     }

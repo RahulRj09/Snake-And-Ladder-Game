@@ -19,7 +19,7 @@ public class PlayerTest {
         Player rahul = new Player(red, "hello1@gmail.com");
         Dice dice = spy(new Dice());
         when(dice.roll()).thenReturn(1);
-        rahul.play(dice);
+        rahul.play(dice, currentPlayer.getEmailId());
         TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
         JSONObject position  = tokenDatabaseHelper.getCurrentPosition("hello1@gmail.com");
         tokenDatabaseHelper.tableTruncate();
