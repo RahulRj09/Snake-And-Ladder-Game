@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 
 import java.sql.*;
 
+@SuppressWarnings("unchecked")
 public class TokenDatabaseHelper {
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
@@ -23,7 +24,6 @@ public class TokenDatabaseHelper {
     }
 
     public JSONObject getCurrentPosition(String emailId) {
-        JSONObject currentPosition = new JSONObject();
         JSONObject currentPositionObject = new JSONObject();
         JSONArray currentPositionArray = new JSONArray();
         String selectQuery = String.format("SELECT * FROM gameCurrentState WHERE emailId = '%s'", emailId);
@@ -32,17 +32,15 @@ public class TokenDatabaseHelper {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 JSONObject position = new JSONObject();
-                currentPosition.put("position", resultSet.getInt("position"));
                 position.put("position", resultSet.getInt("position"));
-                position.put("emailId",resultSet.getString("emailId"));
+                position.put("emailId", emailId);
                 currentPositionArray.add(position);
             }
-            currentPositionObject.put("details",currentPositionArray);
+            currentPositionObject.put("details", currentPositionArray);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        System.out.println(currentPositionObject.get("details"));
-        return currentPosition;
+        return currentPositionObject;
     }
 
     public void tableTruncate() throws SQLException {
@@ -64,7 +62,7 @@ public class TokenDatabaseHelper {
     }
 
 
-    public boolean positionRowExistsOrNotForCurrentUser(String loggedUserEmailId){
+    public boolean positionRowExistsOrNotForCurrentUser(String loggedUserEmailId) {
         String selectQuery = String.format("SELECT * FROM gameCurrentState WHERE emailId = '%s'", loggedUserEmailId);
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {

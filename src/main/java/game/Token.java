@@ -1,6 +1,7 @@
 package game;
 
 import DatabaseHelper.TokenDatabaseHelper;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Token {
@@ -16,7 +17,9 @@ public class Token {
     }
 
     public int getPosition(String emailId) {
-        JSONObject positions = tokenDatabaseHelper.getCurrentPosition(emailId);
-        return (int) positions.get("position");
+        JSONObject position = tokenDatabaseHelper.getCurrentPosition(emailId);
+        JSONArray positionArray = (JSONArray) position.get("details");
+        JSONObject positionA = (JSONObject) positionArray.get(0);
+        return (int) positionA.get("position");
     }
 }
