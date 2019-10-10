@@ -2,6 +2,7 @@ package game;
 
 import DatabaseHelper.ProfileDatabaseHelper;
 import DatabaseHelper.TokenDatabaseHelper;
+import gamehandler.PlayerHandler;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +15,6 @@ public class Player {
     private boolean tokenOut = false;
     private String emailId;
     private ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
-
     public Player(Yard yard, String emailId) {
         this.yard = yard;
         this.token = yard.getToken();

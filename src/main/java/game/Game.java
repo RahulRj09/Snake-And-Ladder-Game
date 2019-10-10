@@ -1,5 +1,7 @@
 package game;
 
+import gamehandler.PlayerHandler;
+
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
@@ -9,11 +11,12 @@ public class Game {
     private final List<Player> players;
     private int currentPlayerIndex;
     boolean result = true;
+    private PlayerHandler playerHandler = new PlayerHandler();
 
     public Game(Board board, List<Player> players) {
         this.board = board;
         this.players = players;
-        this.currentPlayerIndex = 0;
+        this.currentPlayerIndex = playerHandler.getCurrentIndex();
     }
 
     public boolean isRunning() {
