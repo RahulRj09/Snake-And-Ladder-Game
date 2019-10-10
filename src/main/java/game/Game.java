@@ -23,11 +23,12 @@ public class Game {
         return result;
     }
 
-    public void play() throws SQLException, FileNotFoundException {
+    public String play() throws SQLException, FileNotFoundException {
 
         Player currentPlayer = players.get(currentPlayerIndex);
         this.result = currentPlayer.play(board.getDice());
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
         playerHandler.updateIndex(currentPlayerIndex);
+        return currentPlayer.getEmailId();
     }
 }

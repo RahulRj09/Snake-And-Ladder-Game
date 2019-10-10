@@ -45,8 +45,8 @@ public class GameHandler implements HttpHandler {
         Game game = new Game(board, players);
 
        if (game.isRunning()) {
-            game.play();
-            position = tokenDatabaseHelper.getCurrentPosition(getEmailId());
+            String id = game.play();
+            position = tokenDatabaseHelper.getCurrentPosition(id);
             try {
                 String response = position.toString();
                 exchange.getResponseHeaders().set("Content-Type", "appication/json");
