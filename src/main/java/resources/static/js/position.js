@@ -3,6 +3,8 @@ $('#dice').click(function () {
     $.emailId = localStorage.getItem("emailId");
     console.log($.emailId);
     $.get("/getCurrentPosition?emailId=" + $.emailId, function (data) {
-        $('#position').append(data.position);
+        if (data) {
+            $('#position').append(data.position);
+        }
     });
 });

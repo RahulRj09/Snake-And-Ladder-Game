@@ -7,9 +7,9 @@ function GetAllProperties() {
             $('h2').append(data.Profile[0].name);
             $('#name').append(data.Profile[0].name);
             $('#email').append(data.Profile[0].email);
-            $('#win').append(data.Profile[0].win)
-            $('#loss').append(data.Profile[0].loss)
-            $('#total').append(data.Profile[0].total)
+            $('#win').append(data.Profile[0].win);
+            $('#loss').append(data.Profile[0].loss);
+            $('#total').append(data.Profile[0].total);
         } else {
             $('h2').append("User not found")
         }

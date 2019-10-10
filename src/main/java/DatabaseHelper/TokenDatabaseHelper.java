@@ -28,7 +28,6 @@ public class TokenDatabaseHelper {
              PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                currentPosition.put("emailId", resultSet.getString("emailId"));
                 currentPosition.put("position", resultSet.getInt("position"));
             }
 
