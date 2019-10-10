@@ -56,19 +56,15 @@ public class TokenDatabaseHelper {
     }
 
 
-    public boolean positionRowExistsOrNotForCurrentUser(String loggedUserEmailId) throws SQLException {
+    public boolean positionRowExistsOrNotForCurrentUser(String loggedUserEmailId){
         String selectQuery = String.format("SELECT * FROM gameCurrentState WHERE emailId = '%s'", loggedUserEmailId);
-        ResultSet resultSet = null;
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {
-            resultSet = preparedStatement.executeQuery();
-
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if(resultSet == null){
-            return true;
-        }
-        return false;
+        return Boolean.parseBoolean(null);
     }
 }
