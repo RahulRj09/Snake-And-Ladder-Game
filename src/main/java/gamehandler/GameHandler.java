@@ -66,13 +66,7 @@ public class GameHandler implements HttpHandler {
         return emailId;
     }
 
-    public void setEmailId(String emailId) throws IOException {
+    public void setEmailId(String emailId){
         this.emailId = emailId;
-        File file = new File("/Users/rahul.joshi/SnakeAndLadderGame/src/main/java/resources/static/email.txt");
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
-            bw.write(emailId);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
