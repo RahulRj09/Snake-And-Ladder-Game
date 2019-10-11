@@ -41,26 +41,18 @@ public class Player {
                 TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
                 tokenDatabaseHelper.tableTruncate();
 
-                if (!getEmailId().equals(getLoggedUserEmailId())) {
-                    profileDatabaseHelper.updateLostGames(getLoggedUserEmailId());
+                if (!getEmailId().equals(getEmailId())) {
+                    profileDatabaseHelper.updateLostGames(getEmailId());
                 }
-                if (getEmailId().equals(getLoggedUserEmailId())) {
+                if (getEmailId().equals(getEmailId())) {
                     profileDatabaseHelper.updateWinningGames(getEmailId());
                 }
-                profileDatabaseHelper.totalPlayedGame(getLoggedUserEmailId());
+                profileDatabaseHelper.totalPlayedGame(getEmailId());
                 return false;
             }
         }
         return true;
     }
-
-    private String getLoggedUserEmailId() throws FileNotFoundException {
-        File file = new File("/Users/rahul.joshi/SnakeAndLadderGame/src/main/java/resources/static/email.txt");
-        Scanner sc = new Scanner(file);
-        String input = String.valueOf(sc.next());
-        return input;
-    }
-
     private void moveATokenOut() {
         token.place(getEmailId(), yard.getStartingPoint());
     }
