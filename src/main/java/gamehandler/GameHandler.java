@@ -44,7 +44,7 @@ public class GameHandler implements HttpHandler {
         Board board = new Board(yards, dice);
         Game game = new Game(board, players);
 
-       if (game.isRunning()) {
+        if (game.isRunning()) {
             String id = game.play();
             position = tokenDatabaseHelper.getCurrentPosition(id);
             try {
@@ -66,7 +66,7 @@ public class GameHandler implements HttpHandler {
         return emailId;
     }
 
-    public void setEmailId(String emailId){
+    public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
 }
