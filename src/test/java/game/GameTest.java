@@ -12,7 +12,6 @@ import static org.junit.Assert.*;
 public class GameTest {
     @Test
     public void gameShouldBeRun() throws IOException, SQLException {
-        setEmailId();
         Yard green = new Yard(new Token(), "green");
         Yard red = new Yard(new Token(), "red");
         List<Yard> yards = new ArrayList<>();
@@ -29,15 +28,6 @@ public class GameTest {
         while (game.isRunning()) {
             game.play();
             game.isRunning();
-        }
-    }
-    public void setEmailId() throws IOException {
-        String emailId ="hello@gmail.com";
-        File file = new File("/Users/rahul.joshi/SnakeAndLadderGame/src/main/java/resources/static/email.txt");
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
-            bw.write(emailId);
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
