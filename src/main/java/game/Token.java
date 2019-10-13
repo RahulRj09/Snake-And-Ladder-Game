@@ -36,8 +36,8 @@ public class Token {
 
     public void setPosition(String emailId, int numberOnDice) {
         int position = numberOnDice + getPosition(emailId);
-        checkSnakeAndLadderPosition(position);
-        tokenDatabaseHelper.updatePosition(emailId, position);
+
+        tokenDatabaseHelper.updatePosition(emailId, checkSnakeAndLadderPosition(position));
     }
 
     public int getPosition(String emailId) {
@@ -51,7 +51,9 @@ public class Token {
         if (laddersPositions.containsKey(position)) {
             return laddersPositions.get(position);
         }
-        if ()
-
-
+        if (snakesPositions.containsKey(position)) {
+            return snakesPositions.get(position);
+        }
+        return position;
     }
+}
