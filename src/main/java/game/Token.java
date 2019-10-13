@@ -34,4 +34,9 @@ public class Token {
         JSONObject positionA = (JSONObject) positionArray.get(0);
         return (int) positionA.get("position");
     }
+
+    public int checkSnakeAndLadderPosition() {
+        return 0;
+    }
+
 }
