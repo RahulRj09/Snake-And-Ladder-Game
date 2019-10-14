@@ -1,9 +1,6 @@
 package DatabaseHelper;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class WinnerDatabaseHelper {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -21,5 +18,10 @@ public class WinnerDatabaseHelper {
             ex.printStackTrace();
         }
         return emailId;
+    }
+    public void tableTruncate() throws SQLException {
+        Connection conn = databaseConnection.connect();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("TRUNCATE gameCurrentState");
     }
 }
