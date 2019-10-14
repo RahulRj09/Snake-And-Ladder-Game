@@ -36,9 +36,6 @@ public class Player {
         if (position + numberOnDice <= yard.getEndingPoint()) {
             token.setPosition(getEmailId(), numberOnDice);
             if (token.getPosition(getEmailId()) == yard.getEndingPoint()) {
-                TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
-                tokenDatabaseHelper.tableTruncate();
-
                 if (!getEmailId().equals(getEmailId())) {
                     profileDatabaseHelper.updateLostGames(getEmailId());
                 }
