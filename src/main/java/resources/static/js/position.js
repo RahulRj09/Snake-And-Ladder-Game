@@ -60,7 +60,10 @@ $('#dice').click(function () {
             let position = data.details[0].position;
             let emailId = data.details[0].emailId;
             if (emailId === $.emailId) {
-                $('#'+positions[position]).prepend('<img id="theImg" src="../static/images/snakes-and-ladders-board-game"  alt="you"/>')
+                $('#'+positions[position]).prepend('<img id="players" src="../static/images/snakes-and-ladders-board-game"  alt="you"/>')
+            }
+            if (emailId === "computer@gmail.com") {
+                $('#'+positions[position]).prepend('<img id="players" src="../static/images/tom.png"  alt="you"/>')
             }
             $('#currentPositionEmailId').append(emailId);
             $('#position').append(position);
