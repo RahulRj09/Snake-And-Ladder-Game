@@ -53,19 +53,18 @@
     font-size: 24px;
 }
 
-#image{
+#board{
     position: relative;
     text-align: center;
-    color: red;
+    color: white;
 }
 
-#1{
+#one{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 8px;
+    left: 360px;
 }
-#board{
+#image{
     width: 50%;
     height: 70%;
 }
