@@ -8,7 +8,7 @@ $('#dice').click(function () {
             $('#position').append(data.details[0].position);
             if (data.details[0].position === 100) {
                 $.get("/getWinner", function (data) {
-
+                    console.log(data)
                 });
             }
         } else {

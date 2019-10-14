@@ -43,12 +43,6 @@ public class TokenDatabaseHelper {
         return currentPositionObject;
     }
 
-    public void tableTruncate() throws SQLException {
-        Connection conn = databaseConnection.connect();
-        Statement statement = conn.createStatement();
-        statement.executeUpdate("TRUNCATE gameCurrentState");
-    }
-
     public void insert(String emailId, int position) {
         String insertQuery = "insert into gameCurrentState(emailId,position) VALUES(?,?)";
         try (Connection conn = databaseConnection.connect();
