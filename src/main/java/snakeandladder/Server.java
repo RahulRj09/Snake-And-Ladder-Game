@@ -7,6 +7,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import gamehandler.GameHandler;
+import gamehandler.WinnerHandler;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
@@ -25,6 +26,7 @@ public class Server {
         server.createContext("/getProfile", new ProfileHandler());
         server.createContext("/login", new LoginHandler());
         server.createContext("/getCurrentPosition", new GameHandler());
+        server.createContext("/getWinner", new WinnerHandler());
         server.setExecutor(null);
         server.start();
     }
