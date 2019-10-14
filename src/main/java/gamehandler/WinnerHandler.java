@@ -10,6 +10,7 @@ import java.io.IOException;
 public class WinnerHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        new WinnerDatabaseHelper();
+        WinnerDatabaseHelper winnerDatabaseHelper = new WinnerDatabaseHelper();
+        winnerDatabaseHelper.getWinner();
     }
 }
