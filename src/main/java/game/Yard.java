@@ -2,15 +2,15 @@ package game;
 
 
 public class Yard {
-    Token token;
-    int startingPoint;
-    int endingPoint;
-    String color;
+    private Token token;
+    private int startingPoint;
+    private int endingPoint;
+    private String color;
 
     public Yard(Token token, String color) {
         this.token = token;
         this.startingPoint = 1;
-        this.endingPoint =100;
+        this.endingPoint = 100;
         this.color = color;
     }
 

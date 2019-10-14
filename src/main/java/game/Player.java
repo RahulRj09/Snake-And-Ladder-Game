@@ -3,10 +3,8 @@ package game;
 import DatabaseHelper.ProfileDatabaseHelper;
 import DatabaseHelper.TokenDatabaseHelper;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class Player {
     private final Token token;
