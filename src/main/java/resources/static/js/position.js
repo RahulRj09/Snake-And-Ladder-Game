@@ -6,8 +6,12 @@ $('#dice').click(function () {
         if (data) {
             $('#currentPositionEmailId').append(data.details[0].emailId);
             $('#position').append(data.details[0].position);
-        }
-        else {
+            if (data.details[0].position === 100) {
+                $.get("/getWinner", function (data) {
+
+                });
+            }
+        } else {
             $('#position').append(0);
         }
     });
