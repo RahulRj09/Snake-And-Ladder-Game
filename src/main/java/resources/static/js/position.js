@@ -111,10 +111,12 @@ $('#dice').click(function () {
             let position = data.details[0].position;
             let emailId = data.details[0].emailId;
             if (emailId === $.emailId) {
-                $('#' + positions[position]).prepend('<img id="players" src="../static/images/jerry.png"  alt="you"/>')
+                $('div >  img.jerry').remove();
+                $('#' + positions[position]).prepend('<img class="jerry" id="players" src="../static/images/jerry.png"  alt="you"/>')
             }
             if (emailId === "computer@gmail.com") {
-                $('#' + positions[position]).prepend('<img id="players" src="../static/images/tom.png"  alt="you"/>')
+                $('div >  img.tom').remove();
+                $('#' + positions[position]).prepend('<img class="tom" id="players" src="../static/images/tom.png"  alt="Computer"/>')
             }
             $('#currentPositionEmailId').append(emailId);
             $('#position').append(position);

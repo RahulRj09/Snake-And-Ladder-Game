@@ -185,6 +185,431 @@
     left: 990px;
 }
 
+#thirtyOne {
+    position: absolute;
+    bottom: 150px;
+    left: 990px;
+
+}
+
+#thirtyTwo {
+    position: absolute;
+    bottom: 150px;
+    left: 920px;
+}
+
+#thirtyThree {
+    position: absolute;
+    bottom: 150px;
+    left: 850px;
+}
+
+#thirtyFour {
+    position: absolute;
+    bottom: 150px;
+    left: 780px;
+}
+
+#thirtyFive {
+    position: absolute;
+    bottom: 150px;
+    left: 640px;
+}
+
+#thirtySix {
+    position: absolute;
+    bottom: 150px;
+    left: 710px;
+}
+
+#thirtySeven {
+    position: absolute;
+    bottom: 150px;
+    left: 570px;
+}
+
+#thirtyEight {
+    position: absolute;
+    bottom: 150px;
+    left: 500px;
+}
+
+#thirtyNine {
+    position: absolute;
+    bottom: 150px;
+    left: 430px;
+}
+
+#fourty {
+    position: absolute;
+    bottom: 150px;
+    left: 360px;
+}
+
+#fourtyOne {
+    position: absolute;
+    bottom: 200px;
+    left: 360px;
+}
+
+#fourtyTwo {
+    position: absolute;
+    bottom: 200px;
+    left: 430px;
+}
+
+#fourtyThree {
+    position: absolute;
+    bottom: 200px;
+    left: 500px;
+}
+
+#fourtyFour {
+    position: absolute;
+    bottom: 200px;
+    left: 570px;
+}
+
+#fourtyFive {
+    position: absolute;
+    bottom: 200px;
+    left: 640px;
+}
+
+#fourtySix {
+    position: absolute;
+    bottom: 200px;
+    left: 710px;
+}
+
+#fourtySeven {
+    position: absolute;
+    bottom: 200px;
+    left: 780px;
+}
+
+#fourtyEight {
+    position: absolute;
+    bottom: 200px;
+    left: 850px;
+}
+
+#fourtyNine {
+    position: absolute;
+    bottom: 200px;
+    left: 920px;
+}
+
+#fifty {
+    position: absolute;
+    bottom: 200px;
+    left: 990px;
+}
+
+#fiftyOne {
+    position: absolute;
+    bottom: 250px;
+    left: 990px;
+
+}
+
+#fiftyTwo {
+    position: absolute;
+    bottom: 250px;
+    left: 920px;
+}
+
+#fiftyThree {
+    position: absolute;
+    bottom: 250px;
+    left: 850px;
+}
+
+#fiftyFour {
+    position: absolute;
+    bottom: 250px;
+    left: 780px;
+}
+
+#fiftyFive {
+    position: absolute;
+    bottom: 250px;
+    left: 640px;
+}
+
+#fiftySix {
+    position: absolute;
+    bottom: 250px;
+    left: 710px;
+}
+
+#fiftySeven {
+    position: absolute;
+    bottom: 250px;
+    left: 570px;
+}
+
+#fiftyEight {
+    position: absolute;
+    bottom: 250px;
+    left: 500px;
+}
+
+#fiftyNine {
+    position: absolute;
+    bottom: 250px;
+    left: 430px;
+}
+
+#sixty {
+    position: absolute;
+    bottom: 250px;
+    left: 360px;
+}
+
+#sixtyOne {
+    position: absolute;
+    bottom: 300px;
+    left: 360px;
+}
+
+#sixtyTwo {
+    position: absolute;
+    bottom: 300px;
+    left: 430px;
+}
+
+#sixtyThree {
+    position: absolute;
+    bottom: 300px;
+    left: 500px;
+}
+
+#sixtyFour {
+    position: absolute;
+    bottom: 300px;
+    left: 570px;
+}
+
+#sixtyFive {
+    position: absolute;
+    bottom: 300px;
+    left: 640px;
+}
+
+#sixtySix {
+    position: absolute;
+    bottom: 300px;
+    left: 710px;
+}
+
+#sixtySeven {
+    position: absolute;
+    bottom: 300px;
+    left: 780px;
+}
+
+#sixtyEight {
+    position: absolute;
+    bottom: 300px;
+    left: 850px;
+}
+
+#sixtyNine {
+    position: absolute;
+    bottom: 300px;
+    left: 920px;
+}
+
+#seventy {
+    position: absolute;
+    bottom: 300px;
+    left: 990px;
+}
+
+#seventyOne {
+    position: absolute;
+    bottom: 350px;
+    left: 990px;
+
+}
+
+#seventyTwo {
+    position: absolute;
+    bottom: 350px;
+    left: 920px;
+}
+
+#seventyThree {
+    position: absolute;
+    bottom: 350px;
+    left: 850px;
+}
+
+#seventyFour {
+    position: absolute;
+    bottom: 350px;
+    left: 780px;
+}
+
+#seventyFive {
+    position: absolute;
+    bottom: 350px;
+    left: 640px;
+}
+
+#seventySix {
+    position: absolute;
+    bottom: 350px;
+    left: 710px;
+}
+
+#seventySeven {
+    position: absolute;
+    bottom: 350px;
+    left: 570px;
+}
+
+#seventyEight {
+    position: absolute;
+    bottom: 350px;
+    left: 500px;
+}
+
+#seventyNine {
+    position: absolute;
+    bottom: 350px;
+    left: 430px;
+}
+
+#eighty {
+    position: absolute;
+    bottom: 350px;
+    left: 360px;
+}
+
+#eightyOne {
+    position: absolute;
+    bottom: 400px;
+    left: 360px;
+}
+
+#eightyTwo {
+    position: absolute;
+    bottom: 400px;
+    left: 430px;
+}
+
+#eightyThree {
+    position: absolute;
+    bottom: 400px;
+    left: 500px;
+}
+
+#eightyFour {
+    position: absolute;
+    bottom: 400px;
+    left: 570px;
+}
+
+#eightyFour {
+    position: absolute;
+    bottom: 400px;
+    left: 640px;
+}
+
+#eightySix {
+    position: absolute;
+    bottom: 400px;
+    left: 710px;
+}
+
+#eightySeven {
+    position: absolute;
+    bottom: 400px;
+    left: 780px;
+}
+
+#eightyEight {
+    position: absolute;
+    bottom: 400px;
+    left: 850px;
+}
+
+#eightyNine {
+    position: absolute;
+    bottom: 400px;
+    left: 920px;
+}
+
+#ninety {
+    position: absolute;
+    bottom: 400px;
+    left: 990px;
+}
+
+
+#ninetyOne {
+    position: absolute;
+    bottom: 450px;
+    left: 990px;
+
+}
+
+#ninetyTwo {
+    position: absolute;
+    bottom: 450px;
+    left: 920px;
+}
+
+#ninetyThree {
+    position: absolute;
+    bottom: 450px;
+    left: 850px;
+}
+
+#ninetyFour {
+    position: absolute;
+    bottom: 450px;
+    left: 780px;
+}
+
+#ninetyFive {
+    position: absolute;
+    bottom: 450px;
+    left: 640px;
+}
+
+#ninetySix {
+    position: absolute;
+    bottom: 450px;
+    left: 710px;
+}
+
+#ninetySeven {
+    position: absolute;
+    bottom: 450px;
+    left: 570px;
+}
+
+#ninetyEight {
+    position: absolute;
+    bottom: 450px;
+    left: 500px;
+}
+
+#ninetyNine {
+    position: absolute;
+    bottom: 450px;
+    left: 430px;
+}
+
+#oneHundred {
+    position: absolute;
+    bottom: 450px;
+    left: 360px;
+}
+
 
 #image {
     width: 50%;
