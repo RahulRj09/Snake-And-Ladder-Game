@@ -10,3 +10,6 @@ $('#logout').click(function () {
 
     });
 });
+$('#save').click(function () {
+    window.location.replace("/SnakeAndLadderGame/login.html");
+})
