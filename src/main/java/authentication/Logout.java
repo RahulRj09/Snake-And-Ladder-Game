@@ -23,5 +23,10 @@ public class Logout implements HttpHandler {
             os.write(response.getBytes());
             os.close();
         }
+        String response = String.valueOf(result);
+        exchange.sendResponseHeaders(200, response.length());
+        OutputStream os = exchange.getResponseBody();
+        os.write(response.getBytes());
+        os.close();
     }
 }
