@@ -1,6 +1,7 @@
 package snakeandladder;
 
 import authentication.LoginHandler;
+import authentication.Logout;
 import authentication.ProfileHandler;
 import authentication.RegistrationHandler;
 import com.sun.net.httpserver.HttpExchange;
@@ -27,6 +28,7 @@ public class Server {
         server.createContext("/login", new LoginHandler());
         server.createContext("/getCurrentPosition", new GameHandler());
         server.createContext("/getWinner", new WinnerHandler());
+        server.createContext("/logout", new Logout());
         server.setExecutor(null);
         server.start();
     }
