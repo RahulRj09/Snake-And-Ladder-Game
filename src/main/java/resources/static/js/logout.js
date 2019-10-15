@@ -18,9 +18,8 @@ $('#exit').click(function () {
     $.ajax({
         url: '/logout',
         type: 'DELETE',
-        success: function(response) {
+        success: function (response) {
             window.location.replace(response);
         }
-
     });
 })
