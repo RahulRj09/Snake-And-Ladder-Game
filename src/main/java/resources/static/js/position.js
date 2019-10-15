@@ -99,8 +99,7 @@ let positions = {
     98: "ninetyEight",
     99: "ninetyNine",
     100: "OneHundred"
-
-}
+};
 
 $('#dice').click(function () {
     $('#position').empty();
@@ -112,11 +111,13 @@ $('#dice').click(function () {
             let emailId = data.details[0].emailId;
             if (emailId === $.emailId) {
                 $('div >  img.jerry').remove();
-                $('#board').prepend('<div id="' + positions[position] + '"><img class="jerry" id="players" src="../static/images/jerry.png"  alt="you"/></div>')
+                $('#board').prepend('<div id="' + positions[position] + '">' +
+                    '<img class="jerry" id="players" src="../static/images/jerry.png"  alt="you"/></div>')
             }
             if (emailId === "computer@gmail.com") {
                 $('div >  img.tom').remove();
-                $('#board').prepend('<div id="' + positions[position] + '"><img class="tom" id="players" src="../static/images/tom.png"  alt="Computer"/></div>')
+                $('#board').prepend('<div id="' + positions[position] + '">' +
+                    '<img class="tom" id="players" src="../static/images/tom.png"  alt="Computer"/></div>')
             }
             $('#currentPositionEmailId').append(emailId);
             $('#position').append(position);

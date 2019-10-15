@@ -15,7 +15,7 @@ public class Token {
         put(33, 49);
         put(42, 63);
         put(50, 69);
-        put(62, 89);
+        put(62, 81);
         put(74, 92);
     }};
 
