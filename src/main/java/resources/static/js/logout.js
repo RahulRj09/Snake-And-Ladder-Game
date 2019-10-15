@@ -1,6 +1,6 @@
 const modalForLogout = document.getElementById("logoutModal");
+$.emailId = localStorage.getItem("emailId");
 $('#logout').click(function () {
-    $.emailId = localStorage.getItem("emailId");
     $.get("/logout?emailId=" + $.emailId, function (data) {
         if (data === "false") {
             window.location.replace("/SnakeAndLadderGame/login.html");
@@ -12,4 +12,15 @@ $('#logout').click(function () {
 });
 $('#save').click(function () {
     window.location.replace("/SnakeAndLadderGame/login.html");
+})
+
+$('#exit').click(function () {
+    $.ajax({
+        url: '/logout',
+        type: 'DELETE',
+        success: function(response) {
+            window.location.replace(response);
+        }
+
+    });
 })
