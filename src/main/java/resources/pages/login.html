@@ -11,8 +11,12 @@
                 let emailId = $("#email").val();
                 let password = $("#password").val();
                 localStorage.setItem("emailId", emailId);
-                $.get("/login?emailId=" + emailId +"password="+password, function (data) {
-
+                $.get("/login?emailId=" + emailId + "password=" + password, function (data) {
+                    console.log(data)
+                    if (data === true) {
+                        window.location.replace("/SnakeAndLadderGame/home.html");
+                    }
+                    window.location.replace("/SnakeAndLadderGame/login.html");
                 });
             });
         });
@@ -21,7 +25,7 @@
 <body>
 <div class="authentication-page">
     <div class="form">
-        <form class="authentication-form" method="post"  id="my-form">
+        <form class="authentication-form" method="post" id="my-form">
             <input type="text" placeholder="username" name="emailId" id="email"/>
             <input type="password" placeholder="password" name="password" id="password"/>
             <button type="submit">login</button>
