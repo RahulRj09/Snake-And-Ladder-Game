@@ -5,6 +5,8 @@ import DatabaseHelper.Login;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
@@ -20,8 +22,15 @@ public class LoginHandler implements HttpHandler {
         String password = loginDetails.get(2);
         Login login = new Login();
         try {
-            boolean result = login.checkEmailForLogin(emailId,password);
-        } catch (SQLException e) {
+            boolean result = login.checkEmailForLogin(emailId, password);
+            String response = String.valueOf(result);
+            exchange.getResponseHeaders().set("Content-Type", "appication/json");
+            exchange.sendResponseHeaders(200, response.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
 

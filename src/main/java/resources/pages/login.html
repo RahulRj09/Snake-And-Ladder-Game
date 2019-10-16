@@ -12,12 +12,7 @@
                 let password = $("#password").val();
                 localStorage.setItem("emailId", emailId);
                 $.get("/login?emailId=" + emailId +"password="+password, function (data) {
-                    if (data === "false") {
-                        window.location.replace("/SnakeAndLadderGame/login.html");
-                    } else if (data === "true") {
-                        modalForLogout.style.display = "block";
 
-                    }
                 });
             });
         });
