@@ -1,6 +1,6 @@
 package authentication;
 
-import DatabaseHelper.TokenDatabaseHelper;
+import DatabaseHelper.Token;
 import DatabaseHelper.WinnerDatabaseHelper;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -30,8 +30,8 @@ public class Logout implements HttpHandler {
         }
         String emailId = exchange.getRequestURI().getQuery();
         List<String> emailIdA = Arrays.asList(emailId.split("="));
-        TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
-        boolean result = tokenDatabaseHelper.positionRowExistsOrNotForCurrentUser(emailIdA.get(1));
+        Token token = new Token();
+        boolean result = token.positionRowExistsOrNotForCurrentUser(emailIdA.get(1));
         if (!result) {
             String response = String.valueOf(false);
             exchange.sendResponseHeaders(200, response.length());

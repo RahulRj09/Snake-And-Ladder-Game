@@ -1,10 +1,10 @@
 package game;
 
 import DatabaseHelper.Profile;
-import DatabaseHelper.TokenDatabaseHelper;
+import DatabaseHelper.Token;
 
 public class Player {
-    private final Token token;
+    private final game.Token token;
     private Yard yard;
     private String emailId;
     private Profile profile = new Profile();
@@ -16,9 +16,9 @@ public class Player {
     }
 
     public void play(Dice dice) {
-        TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
+        Token token = new Token();
         int numberOnDice = dice.roll();
-        boolean b = tokenDatabaseHelper.positionRowExistsOrNotForCurrentUser(getEmailId());
+        boolean b = token.positionRowExistsOrNotForCurrentUser(getEmailId());
         if (!b && numberOnDice == 1) {
             moveATokenOut();
         } else if (b) {

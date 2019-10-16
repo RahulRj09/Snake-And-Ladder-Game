@@ -1,6 +1,6 @@
 package gamehandler;
 
-import DatabaseHelper.TokenDatabaseHelper;
+import DatabaseHelper.Token;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import game.*;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class GameHandler implements HttpHandler {
     private String emailId;
-    private TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
+    private Token token = new Token();
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
@@ -30,8 +30,8 @@ public class GameHandler implements HttpHandler {
 
     private void play(HttpExchange exchange) throws SQLException, FileNotFoundException {
         JSONObject position;
-        Yard green = new Yard(new Token());
-        Yard red = new Yard(new Token());
+        Yard green = new Yard(new game.Token());
+        Yard red = new Yard(new game.Token());
         List<Yard> yards = new ArrayList<>();
         yards.add(red);
         yards.add(green);
@@ -44,7 +44,7 @@ public class GameHandler implements HttpHandler {
         Board board = new Board(yards, dice);
         Game game = new Game(board, players);
         String id = game.play();
-        position = tokenDatabaseHelper.getCurrentPosition(id);
+        position = token.getCurrentPosition(id);
         try {
             String response = position.toString();
             exchange.getResponseHeaders().set("Content-Type", "appication/json");

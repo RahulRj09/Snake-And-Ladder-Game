@@ -1,6 +1,5 @@
 package game;
 
-import DatabaseHelper.TokenDatabaseHelper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -8,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Token {
-    private TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
+    private DatabaseHelper.Token token = new DatabaseHelper.Token();
     private Map<Integer, Integer> laddersPositions = new HashMap<>() {{
         put(4, 25);
         put(13, 46);
@@ -31,17 +30,17 @@ public class Token {
     }};
 
     public void place(String emailId, int startingPoint) {
-        tokenDatabaseHelper.insert(emailId, startingPoint);
+        token.insert(emailId, startingPoint);
     }
 
     public void setPosition(String emailId, int numberOnDice) {
         int position = numberOnDice + getPosition(emailId);
 
-        tokenDatabaseHelper.updatePosition(emailId, checkSnakeAndLadderPosition(position));
+        token.updatePosition(emailId, checkSnakeAndLadderPosition(position));
     }
 
     public int getPosition(String emailId) {
-        JSONObject position = tokenDatabaseHelper.getCurrentPosition(emailId);
+        JSONObject position = token.getCurrentPosition(emailId);
         JSONArray positionArray = (JSONArray) position.get("details");
         JSONObject positionA = (JSONObject) positionArray.get(0);
         return (int) positionA.get("position");

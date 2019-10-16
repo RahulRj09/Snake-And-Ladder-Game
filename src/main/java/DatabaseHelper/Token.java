@@ -6,7 +6,7 @@ import org.json.simple.JSONObject;
 import java.sql.*;
 
 @SuppressWarnings("unchecked")
-public class TokenDatabaseHelper {
+public class Token {
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
 
