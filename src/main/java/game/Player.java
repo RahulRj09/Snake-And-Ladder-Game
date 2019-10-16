@@ -1,13 +1,13 @@
 package game;
 
-import DatabaseHelper.ProfileDatabaseHelper;
+import DatabaseHelper.Profile;
 import DatabaseHelper.TokenDatabaseHelper;
 
 public class Player {
     private final Token token;
     private Yard yard;
     private String emailId;
-    private ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
+    private Profile profile = new Profile();
 
     public Player(Yard yard, String emailId) {
         this.yard = yard;
@@ -32,12 +32,12 @@ public class Player {
             token.setPosition(getEmailId(), numberOnDice);
             if (token.getPosition(getEmailId()) == yard.getEndingPoint()) {
                 if (!getEmailId().equals(getEmailId())) {
-                    profileDatabaseHelper.updateLostGames(getEmailId());
+                    profile.updateLostGames(getEmailId());
                 }
                 if (getEmailId().equals(getEmailId())) {
-                    profileDatabaseHelper.updateWinningGames(getEmailId());
+                    profile.updateWinningGames(getEmailId());
                 }
-                profileDatabaseHelper.totalPlayedGame(getEmailId());
+                profile.totalPlayedGame(getEmailId());
             }
         }
     }

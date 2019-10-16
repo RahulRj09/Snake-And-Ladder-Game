@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @SuppressWarnings("unchecked")
-public class ProfileDatabaseHelper {
+public class Profile {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public JSONObject getUserDetails(String emailId) {

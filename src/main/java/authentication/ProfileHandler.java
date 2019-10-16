@@ -1,6 +1,6 @@
 package authentication;
 
-import DatabaseHelper.ProfileDatabaseHelper;
+import DatabaseHelper.Profile;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.json.simple.JSONObject;
@@ -15,8 +15,8 @@ public class ProfileHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         String emailId = exchange.getRequestURI().getQuery();
         List<String> emailIdA = Arrays.asList(emailId.split("="));
-        ProfileDatabaseHelper profileDatabaseHelper = new ProfileDatabaseHelper();
-        JSONObject res = profileDatabaseHelper.getUserDetails(emailIdA.get(1));
+        Profile profile = new Profile();
+        JSONObject res = profile.getUserDetails(emailIdA.get(1));
         String response = res.toString();
         exchange.getResponseHeaders().set("Content-Type", "appication/json");
         exchange.sendResponseHeaders(200, response.length());
