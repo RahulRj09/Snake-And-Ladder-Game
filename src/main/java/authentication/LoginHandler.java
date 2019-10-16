@@ -15,9 +15,15 @@ public class LoginHandler implements HttpHandler {
         String loginInfo = exchange.getRequestURI().getQuery();
         List<String> loginDetails = Arrays.asList(loginInfo.split("="));
         String emailId = getEmailId(loginDetails.get(1));
+        String password = loginDetails.get(2);
+
     }
 
     private String getEmailId(String s) {
-        return null;
+        StringBuilder emailId = new StringBuilder();
+        for (int i = 0; i < s.length() - 8; i++) {
+            emailId.append(s.charAt(i));
+        }
+        return emailId.toString();
     }
 }
