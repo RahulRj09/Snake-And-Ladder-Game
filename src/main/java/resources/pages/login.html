@@ -9,7 +9,16 @@
         $(function () {
             $("#my-form").submit(function (e) {
                 let emailId = $("#email").val();
+                let password = $("#password").val();
                 localStorage.setItem("emailId", emailId);
+                $.get("/login?emailId=" + emailId +"password="+password, function (data) {
+                    if (data === "false") {
+                        window.location.replace("/SnakeAndLadderGame/login.html");
+                    } else if (data === "true") {
+                        modalForLogout.style.display = "block";
+
+                    }
+                });
             });
         });
     </script>
@@ -17,9 +26,9 @@
 <body>
 <div class="authentication-page">
     <div class="form">
-        <form class="authentication-form" method="post" action="/login" id="my-form">
+        <form class="authentication-form" method="post"  id="my-form">
             <input type="text" placeholder="username" name="emailId" id="email"/>
-            <input type="password" placeholder="password" name="password"/>
+            <input type="password" placeholder="password" name="password" id="password"/>
             <button type="submit">login</button>
             <p class="message">Not registered? <a href="./registration.html">Create an account</a></p>
         </form>
