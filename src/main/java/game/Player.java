@@ -3,9 +3,6 @@ package game;
 import DatabaseHelper.ProfileDatabaseHelper;
 import DatabaseHelper.TokenDatabaseHelper;
 
-import java.io.FileNotFoundException;
-import java.sql.SQLException;
-
 public class Player {
     private final Token token;
     private Yard yard;
@@ -18,7 +15,7 @@ public class Player {
         this.emailId = emailId;
     }
 
-    public void play(Dice dice) throws SQLException, FileNotFoundException {
+    public void play(Dice dice) {
         TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
         int numberOnDice = dice.roll();
         boolean b = tokenDatabaseHelper.positionRowExistsOrNotForCurrentUser(getEmailId());
