@@ -2,8 +2,6 @@ package game;
 
 import gamehandler.PlayerHandler;
 
-import java.io.FileNotFoundException;
-import java.sql.SQLException;
 import java.util.List;
 
 public class Game {
@@ -18,7 +16,7 @@ public class Game {
         this.currentPlayerIndex = playerHandler.getCurrentIndex();
     }
 
-    public String play() throws SQLException, FileNotFoundException {
+    public String play() {
 
         Player currentPlayer = players.get(currentPlayerIndex);
         currentPlayer.play(board.getDice());
