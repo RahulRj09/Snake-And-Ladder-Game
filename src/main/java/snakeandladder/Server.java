@@ -39,6 +39,16 @@ public class Server {
             URI requestURI = exchange.getRequestURI();
             File root = FileSystemView.getFileSystemView().getHomeDirectory();
             String newUri = requestURI.getPath().replaceAll("SnakeAndLadderGame", "pages");
+            if (newUri.contains("pages")) {
+                String path = root + "/SnakeAndLadderGame/src/main/java/resources/" + newUri + ".html";
+                File file = new File(path);
+                exchange.sendResponseHeaders(200, file.length());
+                try (OutputStream os = exchange.getResponseBody()) {
+                    Files.copy(file.toPath(), os);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
             String path = root + "/SnakeAndLadderGame/src/main/java/resources/" + newUri;
             File file = new File(path);
             exchange.sendResponseHeaders(200, file.length());
