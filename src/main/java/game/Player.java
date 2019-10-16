@@ -29,7 +29,7 @@ public class Player {
         }
     }
 
-    private boolean moveAToken(int numberOnDice) throws SQLException, FileNotFoundException {
+    private void moveAToken(int numberOnDice) {
         int position = token.getPosition(getEmailId());
         if (position + numberOnDice <= yard.getEndingPoint()) {
             token.setPosition(getEmailId(), numberOnDice);
@@ -41,10 +41,8 @@ public class Player {
                     profileDatabaseHelper.updateWinningGames(getEmailId());
                 }
                 profileDatabaseHelper.totalPlayedGame(getEmailId());
-                return false;
             }
         }
-        return true;
     }
 
     public void moveATokenOut() {
