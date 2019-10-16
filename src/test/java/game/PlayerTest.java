@@ -6,7 +6,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;
