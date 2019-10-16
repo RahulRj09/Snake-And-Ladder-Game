@@ -48,7 +48,7 @@ public class Player {
         }
         return true;
     }
-    private void moveATokenOut() {
+    public void moveATokenOut() {
         token.place(getEmailId(), yard.getStartingPoint());
     }
 

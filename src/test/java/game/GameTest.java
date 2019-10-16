@@ -1,5 +1,6 @@
 package game;
 
+import DatabaseHelper.WinnerDatabaseHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,7 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
 
 
 public class GameTest {

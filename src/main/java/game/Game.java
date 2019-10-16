@@ -18,11 +18,6 @@ public class Game {
         this.players = players;
         this.currentPlayerIndex = playerHandler.getCurrentIndex();
     }
-
-    public boolean isRunning() {
-        return result;
-    }
-
     public String play() throws SQLException, FileNotFoundException {
 
         Player currentPlayer = players.get(currentPlayerIndex);

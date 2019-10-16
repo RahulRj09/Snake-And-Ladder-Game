@@ -43,21 +43,17 @@ public class GameHandler implements HttpHandler {
         Dice dice = new Dice();
         Board board = new Board(yards, dice);
         Game game = new Game(board, players);
-
-        if (game.isRunning()) {
-            String id = game.play();
-            position = tokenDatabaseHelper.getCurrentPosition(id);
-            try {
-                String response = position.toString();
-                exchange.getResponseHeaders().set("Content-Type", "appication/json");
-                exchange.sendResponseHeaders(200, response.length());
-                OutputStream os = exchange.getResponseBody();
-                os.write(response.getBytes());
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            game.isRunning();
+        String id = game.play();
+        position = tokenDatabaseHelper.getCurrentPosition(id);
+        try {
+            String response = position.toString();
+            exchange.getResponseHeaders().set("Content-Type", "appication/json");
+            exchange.sendResponseHeaders(200, response.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
