@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginDatabaseHelper {
+public class Login {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public boolean checkEmailForLogin(String emailId, String password) throws SQLException {

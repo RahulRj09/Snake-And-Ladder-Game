@@ -1,6 +1,6 @@
 package authentication;
 
-import DatabaseHelper.LoginDatabaseHelper;
+import DatabaseHelper.Login;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -20,9 +20,9 @@ public class LoginHandler implements HttpHandler {
         int indexOfAnd = query.indexOf("&");
         StringBuffer emailId = getEmailId(query, indexOfAnd);
         StringBuffer password = getPassword(indexOfAnd + 10, query);
-        LoginDatabaseHelper loginDatabaseHelper = new LoginDatabaseHelper();
+        Login login = new Login();
         try {
-            boolean result = loginDatabaseHelper.checkEmailForLogin(emailId.toString(), password.toString());
+            boolean result = login.checkEmailForLogin(emailId.toString(), password.toString());
             if (result) {
                 File root = FileSystemView.getFileSystemView().getHomeDirectory();
                 String path = root + "/SnakeAndLadderGame/src/main/java/resources/pages/home.html";
