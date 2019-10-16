@@ -13,6 +13,6 @@ public class LoginHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) {
         String loginInfo = exchange.getRequestURI().getQuery();
-
+        List<String> loginDetails = Arrays.asList(loginInfo.split("="));
     }
 }
