@@ -10,7 +10,6 @@ public class Game {
     private final Board board;
     private final List<Player> players;
     private int currentPlayerIndex;
-    boolean result = true;
     private PlayerHandler playerHandler = new PlayerHandler();
 
     public Game(Board board, List<Player> players) {
@@ -18,10 +17,11 @@ public class Game {
         this.players = players;
         this.currentPlayerIndex = playerHandler.getCurrentIndex();
     }
+
     public String play() throws SQLException, FileNotFoundException {
 
         Player currentPlayer = players.get(currentPlayerIndex);
-        this.result = currentPlayer.play(board.getDice());
+        currentPlayer.play(board.getDice());
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
         playerHandler.updateIndex(currentPlayerIndex);
         return currentPlayer.getEmailId();
