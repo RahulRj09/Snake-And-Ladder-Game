@@ -5,22 +5,6 @@
     </title>
     <link rel="stylesheet" href="../static/css/style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $(function () {
-            $("#my-form").submit(function (e) {
-                let emailId = $("#email").val();
-                let password = $("#password").val();
-                localStorage.setItem("emailId", emailId);
-                $.get("/login?emailId=" + emailId + "password=" + password, function (data) {
-                    console.log(data)
-                    if (data === true) {
-                        window.location.replace("/SnakeAndLadderGame/home.html");
-                    }
-                    window.location.replace("/SnakeAndLadderGame/login.html");
-                });
-            });
-        });
-    </script>
 </head>
 <body>
 <div class="authentication-page">
