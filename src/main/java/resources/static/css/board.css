@@ -1,4 +1,4 @@
-#board {
+.board {
     position: relative;
     text-align: center;
     color: white;
@@ -618,4 +618,9 @@
 #players {
     height: 40px;
     width: 40px;
+}
+
+#diceImg {
+    display: block;
+    height: 70px;
 }
