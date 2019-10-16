@@ -24,11 +24,15 @@ public class LoginHandler implements HttpHandler {
         try {
             boolean result = login.checkEmailForLogin(emailId.toString(), password.toString());
             if (result) {
-                String response = "true";
-                exchange.sendResponseHeaders(200, response.length());
-                OutputStream os = exchange.getResponseBody();
-                os.write(response.getBytes());
-                os.close();
+                File root = FileSystemView.getFileSystemView().getHomeDirectory();
+                String path = root + "/SnakeAndLadderGame/src/main/java/resources/pages/home.html";
+                File file = new File(path);
+                exchange.sendResponseHeaders(200, file.length());
+                try (OutputStream os = exchange.getResponseBody()) {
+                    Files.copy(file.toPath(), os);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             } else {
                 String response = "hello !";
                 exchange.sendResponseHeaders(200, response.length());
