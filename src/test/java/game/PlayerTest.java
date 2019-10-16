@@ -30,4 +30,8 @@ public class PlayerTest {
         WinnerDatabaseHelper winnerDatabaseHelper = new WinnerDatabaseHelper();
         winnerDatabaseHelper.tableTruncate();
     }
+    @Test
+    public void tokenShouldBeMove(){
+
+    }
 }
