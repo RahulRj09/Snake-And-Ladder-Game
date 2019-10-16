@@ -30,8 +30,8 @@ public class GameHandler implements HttpHandler {
 
     private void play(HttpExchange exchange) throws SQLException, FileNotFoundException {
         JSONObject position;
-        Yard green = new Yard(new Token(), "green");
-        Yard red = new Yard(new Token(), "red");
+        Yard green = new Yard(new Token());
+        Yard red = new Yard(new Token());
         List<Yard> yards = new ArrayList<>();
         yards.add(red);
         yards.add(green);
