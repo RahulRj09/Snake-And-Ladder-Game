@@ -18,7 +18,7 @@ public class Logout implements HttpHandler {
             Winner winner = new Winner();
             try {
                 winner.tableTruncate();
-                String response = "/SnakeAndLadderGame/login.html";
+                String response = "/SnakeAndLadderGame/login";
                 exchange.sendResponseHeaders(200, response.length());
                 OutputStream os = exchange.getResponseBody();
                 os.write(response.getBytes());
