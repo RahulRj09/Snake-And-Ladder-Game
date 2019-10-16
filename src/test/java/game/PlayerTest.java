@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 
 public class PlayerTest {
     @Test
-    public void tokenShouldBeMoveOut() throws  SQLException {
+    public void tokenShouldBeMoveOut() throws SQLException {
         Yard red = new Yard(new Token(), "red");
         Player rahul = new Player(red, "hello1@gmail.com");
         Dice dice = spy(new Dice());
@@ -32,7 +32,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void tokenShouldBeMove() throws  SQLException {
+    public void tokenShouldBeMove() throws SQLException {
         Yard red = new Yard(new Token(), "red");
         Player rahul = new Player(red, "hello1@gmail.com");
         Dice dice = spy(new Dice());
