@@ -15,7 +15,4 @@ public class Board {
         return dice;
     }
 
-    public List<Yard> getYards() {
-        return yards;
-    }
 }
