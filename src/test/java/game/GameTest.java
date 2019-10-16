@@ -1,11 +1,14 @@
 package game;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 
 public class GameTest {
@@ -28,5 +31,9 @@ public class GameTest {
             game.play();
             game.isRunning();
         }
+    }
+    @Test
+    public void gameShouldBeRunning(){
+
     }
 }
