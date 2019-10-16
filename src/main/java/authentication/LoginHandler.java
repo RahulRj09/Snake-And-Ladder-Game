@@ -1,9 +1,11 @@
 package authentication;
 
 
+import DatabaseHelper.Login;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,6 +18,12 @@ public class LoginHandler implements HttpHandler {
         List<String> loginDetails = Arrays.asList(loginInfo.split("="));
         String emailId = getEmailId(loginDetails.get(1));
         String password = loginDetails.get(2);
+        Login login = new Login();
+        try {
+            boolean result = login.checkEmailForLogin(emailId,password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
