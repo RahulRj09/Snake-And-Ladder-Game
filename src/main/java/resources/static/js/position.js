@@ -21,7 +21,7 @@ let positions = {
     20: "twenty",
     21: "twentyOne",
     22: "twentyTwo",
-    23: "twentyTree",
+    23: "twentyThree",
     24: "twentyFour",
     25: "twentyFive",
     26: "twentySix",

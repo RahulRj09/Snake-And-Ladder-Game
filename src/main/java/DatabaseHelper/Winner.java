@@ -11,7 +11,7 @@ public class Winner {
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 String emailId = resultSet.getString("emailId");
                 String query = String.format("SELECT * FROM users WHERE emailId = '%s'", emailId);
                 PreparedStatement preparedStatement1 = conn.prepareStatement(query);
