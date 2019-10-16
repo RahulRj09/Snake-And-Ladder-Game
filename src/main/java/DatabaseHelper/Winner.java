@@ -2,7 +2,7 @@ package DatabaseHelper;
 
 import java.sql.*;
 
-public class WinnerDatabaseHelper {
+public class Winner {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public String getWinner() {

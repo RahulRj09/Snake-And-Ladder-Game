@@ -1,7 +1,7 @@
 package game;
 
 import DatabaseHelper.Token;
-import DatabaseHelper.WinnerDatabaseHelper;
+import DatabaseHelper.Winner;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.Test;
@@ -27,8 +27,8 @@ public class PlayerTest {
         JSONArray positionArray = (JSONArray) position.get("details");
         JSONObject positionA = (JSONObject) positionArray.get(0);
         assertEquals(1, positionA.get("position"));
-        WinnerDatabaseHelper winnerDatabaseHelper = new WinnerDatabaseHelper();
-        winnerDatabaseHelper.tableTruncate();
+        Winner winner = new Winner();
+        winner.tableTruncate();
     }
 
     @Test
@@ -45,8 +45,8 @@ public class PlayerTest {
         JSONArray positionArray = (JSONArray) position.get("details");
         JSONObject positionA = (JSONObject) positionArray.get(0);
         assertEquals(7, positionA.get("position"));
-        WinnerDatabaseHelper winnerDatabaseHelper = new WinnerDatabaseHelper();
-        winnerDatabaseHelper.tableTruncate();
+        Winner winner = new Winner();
+        winner.tableTruncate();
 
     }
 }

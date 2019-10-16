@@ -1,7 +1,7 @@
 package gamehandler;
 
 
-import DatabaseHelper.WinnerDatabaseHelper;
+import DatabaseHelper.Winner;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -12,10 +12,10 @@ import java.sql.SQLException;
 public class WinnerHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        WinnerDatabaseHelper winnerDatabaseHelper = new WinnerDatabaseHelper();
+        Winner winnerDatabaseHelper = new Winner();
         String winner = winnerDatabaseHelper.getWinner();
         try {
-            new WinnerDatabaseHelper().tableTruncate();
+            new Winner().tableTruncate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,7 +1,7 @@
 package authentication;
 
 import DatabaseHelper.Token;
-import DatabaseHelper.WinnerDatabaseHelper;
+import DatabaseHelper.Winner;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -15,9 +15,9 @@ public class Logout implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         if (exchange.getRequestMethod().equals("DELETE")) {
-            WinnerDatabaseHelper winnerDatabaseHelper = new WinnerDatabaseHelper();
+            Winner winner = new Winner();
             try {
-                winnerDatabaseHelper.tableTruncate();
+                winner.tableTruncate();
                 String response = "/SnakeAndLadderGame/login.html";
                 exchange.sendResponseHeaders(200, response.length());
                 OutputStream os = exchange.getResponseBody();
