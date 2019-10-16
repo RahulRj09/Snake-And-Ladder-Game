@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class RegistrationDatabaseHelper {
+public class Registration {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public void insert(String name, String emailId, String password) {
