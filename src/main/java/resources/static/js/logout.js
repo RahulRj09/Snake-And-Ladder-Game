@@ -6,6 +6,7 @@ $('#logout').click(function () {
             window.location.replace("/SnakeAndLadderGame/login.html");
         } else if (data === "true") {
             modalForLogout.style.display = "block";
+
         }
 
     });
