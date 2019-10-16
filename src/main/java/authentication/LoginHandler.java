@@ -14,5 +14,10 @@ public class LoginHandler implements HttpHandler {
     public void handle(HttpExchange exchange) {
         String loginInfo = exchange.getRequestURI().getQuery();
         List<String> loginDetails = Arrays.asList(loginInfo.split("="));
+        String emailId = getEmailId(loginDetails.get(1));
+    }
+
+    private String getEmailId(String s) {
+        return null;
     }
 }
