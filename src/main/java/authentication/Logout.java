@@ -32,13 +32,6 @@ public class Logout implements HttpHandler {
         List<String> emailIdA = Arrays.asList(emailId.split("="));
         Token token = new Token();
         boolean result = token.positionRowExistsOrNotForCurrentUser(emailIdA.get(1));
-        if (!result) {
-            String response = String.valueOf(false);
-            exchange.sendResponseHeaders(200, response.length());
-            OutputStream os = exchange.getResponseBody();
-            os.write(response.getBytes());
-            os.close();
-        }
         String response = String.valueOf(result);
         exchange.sendResponseHeaders(200, response.length());
         OutputStream os = exchange.getResponseBody();
