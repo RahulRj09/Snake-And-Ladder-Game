@@ -18,17 +18,15 @@ public class Player {
         this.emailId = emailId;
     }
 
-    public boolean play(Dice dice) throws SQLException, FileNotFoundException {
+    public void play(Dice dice) throws SQLException, FileNotFoundException {
         TokenDatabaseHelper tokenDatabaseHelper = new TokenDatabaseHelper();
         int numberOnDice = dice.roll();
         boolean b = tokenDatabaseHelper.positionRowExistsOrNotForCurrentUser(getEmailId());
         if (!b && numberOnDice == 1) {
             moveATokenOut();
-            return true;
         } else if (b) {
-            return moveAToken(numberOnDice);
+            moveAToken(numberOnDice);
         }
-        return true;
     }
 
     private boolean moveAToken(int numberOnDice) throws SQLException, FileNotFoundException {
@@ -48,6 +46,7 @@ public class Player {
         }
         return true;
     }
+
     public void moveATokenOut() {
         token.place(getEmailId(), yard.getStartingPoint());
     }
