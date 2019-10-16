@@ -5,7 +5,7 @@ $(function () {
         localStorage.setItem("emailId", emailId);
         $.get("/login?emailId=" + emailId + "password=" + password, function (data) {
             if (data === true) {
-                window.location.replace("/SnakeAndLadderGame/home.html");
+                window.location.replace("/SnakeAndLadderGame/home");
             }
         });
     });
