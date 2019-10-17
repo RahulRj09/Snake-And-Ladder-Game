@@ -1,4 +1,4 @@
-$(function () {
+function login() {
     $("#my-form").submit(function (e) {
         let emailId = $("#email").val();
         let password = $("#password").val();
@@ -9,4 +9,4 @@ $(function () {
             }
         });
     });
-});
+}
