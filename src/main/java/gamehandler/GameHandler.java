@@ -7,7 +7,6 @@ import game.*;
 import org.json.simple.JSONObject;
 
 import java.io.*;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
