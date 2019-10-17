@@ -11,12 +11,12 @@ public class Token {
 
 
     public void updatePosition(String emailId, int position, int numberOnDice) {
-        String updateQuery = "UPDATE gameCurrentState SET position=?, numberOnDice=? WHERE emailId=?";
+        String updateQuery = "UPDATE gameCurrentState SET position = ? , numberOnDice = ? WHERE emailId=?";
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(updateQuery)) {
             preparedStatement.setInt(1, position);
-            preparedStatement.setString(2, emailId);
-            preparedStatement.setInt(3, numberOnDice);
+            preparedStatement.setInt(2, numberOnDice);
+            preparedStatement.setString(3, emailId);
             preparedStatement.executeUpdate();
 
         } catch (SQLException ex) {
