@@ -100,7 +100,7 @@ let positions = {
     99: "ninetyNine",
     100: "OneHundred"
 };
-
+const winnerModal = document.getElementById("winnerModal");
 $('#dice').click(function () {
     $('#position').empty();
     $('#currentPositionEmailId').empty();
@@ -126,9 +126,14 @@ $('#dice').click(function () {
             $('#position').append(position);
             if (position === 100) {
                 $.get("/getWinner", function (data) {
-                    $('#winner').append("Winner " + data);
+                    winner(data);
                 });
             }
         }
     });
 });
+
+function winner(data) {
+    $('#winner').append("Winner " + data);
+    winnerModal.style.display = "block";
+}
