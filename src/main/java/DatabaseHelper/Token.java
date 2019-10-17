@@ -7,7 +7,7 @@ import java.sql.*;
 
 @SuppressWarnings("unchecked")
 public class Token {
-    DatabaseConnection databaseConnection = new DatabaseConnection();
+    private DatabaseConnection databaseConnection = new DatabaseConnection();
 
 
     public void updatePosition(String emailId, int position) {
