@@ -15,7 +15,7 @@ function saveTheGameCurrentPosition() {
     window.location.replace("/SnakeAndLadderGame/login");
 }
 
-$('#exit').click(function () {
+function exitTheGameCurrentPosition() {
     $.ajax({
         url: '/logout',
         type: 'DELETE',
@@ -23,13 +23,13 @@ $('#exit').click(function () {
             window.location.replace(response);
         }
     });
-})
+}
 
-$('#replay').click(function () {
+function replay() {
     window.location.replace("/SnakeAndLadderGame/home");
-})
+}
 
-$('#exitAfterGameOver').click(function () {
+function exitTheGameAfterGettingTheWinner() {
     $.ajax({
         url: '/logout',
         type: 'DELETE',
@@ -37,4 +37,4 @@ $('#exitAfterGameOver').click(function () {
             window.location.replace(response);
         }
     });
-})
+}

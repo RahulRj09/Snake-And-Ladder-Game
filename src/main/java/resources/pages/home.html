@@ -31,7 +31,7 @@
 
 <div id="logoutModal" class="modal">
     <div class="modal-content">
-        <button type="button" id="exit" class="btn btn-danger">Exit</button>
+        <button type="button" id="exit" class="btn btn-danger" onclick="exitTheGameCurrentPosition()">Exit</button>
         <button type="button" id="save" class="btn btn-success" onclick="saveTheGameCurrentPosition()">Save</button>
     </div>
 </div>
@@ -46,8 +46,10 @@
 <div id="winnerModal" class="modal">
     <div class="modal-content">
         <h1 id="winner"></h1>
-        <button type="button" id="exitAfterGameOver" class="btn btn-danger">Exit</button>
-        <button type="button" id="replay" class="btn btn-success">Replay</button>
+        <button type="button" id="exitAfterGameOver" class="btn btn-danger"
+                onclick="exitTheGameAfterGettingTheWinner()">Exit
+        </button>
+        <button type="button" id="replay" class="btn btn-success" onclick="replay()">Replay</button>
     </div>
 </div>
 
