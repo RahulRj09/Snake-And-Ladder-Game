@@ -11,11 +11,12 @@ public class Token {
 
 
     public void updatePosition(String emailId, int position, int numberOnDice) {
-        String updateQuery = "UPDATE gameCurrentState SET position=? WHERE emailId=?";
+        String updateQuery = "UPDATE gameCurrentState SET position=?, numberOnDice=? WHERE emailId=?";
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(updateQuery)) {
             preparedStatement.setInt(1, position);
             preparedStatement.setString(2, emailId);
+            preparedStatement.setInt(3, numberOnDice);
             preparedStatement.executeUpdate();
 
         } catch (SQLException ex) {
@@ -44,11 +45,12 @@ public class Token {
     }
 
     public void insert(String emailId, int position) {
-        String insertQuery = "insert into gameCurrentState(emailId,position) VALUES(?,?)";
+        String insertQuery = "insert into gameCurrentState(emailId,position,numberOnDice) VALUES(?,?,?)";
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(insertQuery)) {
             preparedStatement.setString(1, emailId);
             preparedStatement.setInt(2, position);
+            preparedStatement.setInt(3, 1);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
