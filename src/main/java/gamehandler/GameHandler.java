@@ -17,18 +17,14 @@ public class GameHandler implements HttpHandler {
     private Token token = new Token();
 
     @Override
-    public void handle(HttpExchange exchange) throws IOException {
+    public void handle(HttpExchange exchange) {
         String uriQuery = exchange.getRequestURI().getQuery();
         List<String> userInfo = Arrays.asList(uriQuery.split("="));
         setEmailId(userInfo.get(1));
-        try {
-            play(exchange);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        play(exchange);
     }
 
-    private void play(HttpExchange exchange) throws SQLException, FileNotFoundException {
+    private void play(HttpExchange exchange) {
         JSONObject position;
         Yard green = new Yard(new game.Token());
         Yard red = new Yard(new game.Token());
