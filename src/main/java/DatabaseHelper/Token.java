@@ -35,6 +35,7 @@ public class Token {
                 JSONObject position = new JSONObject();
                 position.put("position", resultSet.getInt("position"));
                 position.put("emailId", emailId);
+                position.put("numberOnDice",resultSet.getInt("numberOnDice"));
                 currentPositionArray.add(position);
             }
             currentPositionObject.put("details", currentPositionArray);

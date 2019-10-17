@@ -107,8 +107,11 @@ $('#dice').click(function () {
     $.emailId = localStorage.getItem("emailId");
     $.get("/getCurrentPosition?emailId=" + $.emailId, function (data) {
         if (data) {
+            let numberOnDice = data.details[0].numberOnDice;
+            $("#diceImg").remove();
+            console.log("dice" + numberOnDice + ".png")
+            $("#dice").append('<img src="../static/images/dice' + numberOnDice + '.png" id="diceImg"/>')
             let position = data.details[0].position;
-            localStorage.setItem("currentPosition", position);
             let emailId = data.details[0].emailId;
             if (emailId === $.emailId) {
                 $('div >  img.jerry').remove();
