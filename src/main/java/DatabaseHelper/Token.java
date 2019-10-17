@@ -10,7 +10,7 @@ public class Token {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
 
-    public void updatePosition(String emailId, int position) {
+    public void updatePosition(String emailId, int position, int numberOnDice) {
         String updateQuery = "UPDATE gameCurrentState SET position=? WHERE emailId=?";
         try (Connection conn = databaseConnection.connect();
              PreparedStatement preparedStatement = conn.prepareStatement(updateQuery)) {

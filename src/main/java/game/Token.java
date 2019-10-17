@@ -36,7 +36,7 @@ public class Token {
     public void setPosition(String emailId, int numberOnDice) {
         int position = numberOnDice + getPosition(emailId);
 
-        token.updatePosition(emailId, checkSnakeAndLadderPosition(position));
+        token.updatePosition(emailId, checkSnakeAndLadderPosition(position),numberOnDice);
     }
 
     public int getPosition(String emailId) {

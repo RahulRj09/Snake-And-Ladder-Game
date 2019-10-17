@@ -108,6 +108,7 @@ $('#dice').click(function () {
     $.get("/getCurrentPosition?emailId=" + $.emailId, function (data) {
         if (data) {
             let position = data.details[0].position;
+            localStorage.setItem("currentPosition", position);
             let emailId = data.details[0].emailId;
             if (emailId === $.emailId) {
                 $('div >  img.jerry').remove();
