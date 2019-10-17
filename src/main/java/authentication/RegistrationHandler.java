@@ -8,6 +8,8 @@ import javax.swing.filechooser.FileSystemView;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class RegistrationHandler implements HttpHandler {
@@ -18,6 +20,8 @@ public class RegistrationHandler implements HttpHandler {
         InputStreamReader streamReader = new InputStreamReader(exchange.getRequestBody(), StandardCharsets.UTF_8);
         BufferedReader bufferedReader = new BufferedReader(streamReader);
         String query = bufferedReader.readLine();
+        List<String> demo = Arrays.asList(query.split("="));
+        System.out.println(demo.toString());
         int indexOfAnd = query.indexOf("&");
         StringBuffer name = getName(query, indexOfAnd);
         StringBuffer emailId = getEmailId(query, indexOfAnd + 10);
