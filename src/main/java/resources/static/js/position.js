@@ -109,7 +109,6 @@ $('#dice').click(function () {
         if (data) {
             let numberOnDice = data.details[0].numberOnDice;
             $("#diceImg").remove();
-            console.log("dice" + numberOnDice + ".png")
             $("#dice").append('<img src="../static/images/dice' + numberOnDice + '.png" id="diceImg"/>')
             let position = data.details[0].position;
             let emailId = data.details[0].emailId;
