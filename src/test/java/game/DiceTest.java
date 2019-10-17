@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class DiceTest {
 
     @Test
-    public void shouldBeDiceRoll() {
+    public void diceShouldBeRoll() {
 
     }
 }
