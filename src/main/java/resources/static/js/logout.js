@@ -22,3 +22,7 @@ $('#exit').click(function () {
         }
     });
 })
+
+$('#replay').click(function () {
+    window.location.replace("/SnakeAndLadderGame/home");
+})
