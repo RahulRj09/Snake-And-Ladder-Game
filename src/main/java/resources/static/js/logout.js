@@ -11,9 +11,9 @@ function logout() {
     });
 }
 
-$('#save').click(function () {
+function saveGameCurrentPosition() {
     window.location.replace("/SnakeAndLadderGame/login");
-})
+}
 
 $('#exit').click(function () {
     $.ajax({
