@@ -13,7 +13,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 
-public class PlayerChangerTest {
+public class PlayerTest {
     @Test
     public void tokenShouldBeMoveOut() throws SQLException {
 

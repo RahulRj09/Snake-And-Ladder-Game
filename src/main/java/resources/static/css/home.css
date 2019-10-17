@@ -41,7 +41,7 @@
     cursor: pointer;
 }
 
-#myBtn, #logout  {
+#myBtn, #logout {
     float: right;
     color: #f1f1f1;
     background-color: Transparent;
