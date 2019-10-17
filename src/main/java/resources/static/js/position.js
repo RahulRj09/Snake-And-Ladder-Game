@@ -101,7 +101,6 @@ let positions = {
     100: "OneHundred"
 };
 const winnerModal = document.getElementById("winnerModal");
-const span = document.getElementsByClassName("close")[0];
 $('#dice').click(function () {
     $('#position').empty();
     $('#currentPositionEmailId').empty();

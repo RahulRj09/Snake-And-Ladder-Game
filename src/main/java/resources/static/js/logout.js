@@ -26,3 +26,13 @@ $('#exit').click(function () {
 $('#replay').click(function () {
     window.location.replace("/SnakeAndLadderGame/home");
 })
+
+$('#exitA').click(function () {
+    $.ajax({
+        url: '/logout',
+        type: 'DELETE',
+        success: function (response) {
+            window.location.replace(response);
+        }
+    });
+})
