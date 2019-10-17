@@ -107,7 +107,7 @@ $('#dice').click(function () {
     $.emailId = localStorage.getItem("emailId");
     $.get("/getCurrentPosition?emailId=" + $.emailId, function (data) {
         if (data) {
-            let numberOnDice = data.details[0].numberOnDice;
+            let numberOnDice = data.details[0]['numberOnDice'];
             $("#diceImg").remove();
             $("#dice").append('<img src="../static/images/dice' + numberOnDice + '.png" id="diceImg"/>')
             let position = data.details[0].position;
@@ -126,7 +126,6 @@ $('#dice').click(function () {
             $('#position').append(position);
             if (position === 100) {
                 $.get("/getWinner", function (data) {
-                    console.log(data)
                     $('#winner').append("Winner " + data);
                 });
             }
