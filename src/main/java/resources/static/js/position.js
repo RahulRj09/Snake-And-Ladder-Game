@@ -113,8 +113,9 @@ $('#dice').click(function () {
             let position = data.details[0].position;
             let emailId = data.details[0].emailId;
             if (emailId === $.emailId) {
+                let positionForJerry = positions[position];
                 $('div >  img.jerry').remove();
-                $('#board').prepend('<div id="' + positions[position] + '">' +
+                $('#board').prepend('<div id="' + positionForJerry + '">' +
                     '<img class="jerry" id="players" src="../static/images/jerry.png"  alt="you"/></div>')
             }
             if (emailId === "computer@gmail.com") {
