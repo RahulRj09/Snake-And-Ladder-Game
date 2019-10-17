@@ -19,8 +19,8 @@ public class GameHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         String uriQuery = exchange.getRequestURI().getQuery();
-        List<String> emailIdA = Arrays.asList(uriQuery.split("="));
-        setEmailId(emailIdA.get(1));
+        List<String> userInfo = Arrays.asList(uriQuery.split("="));
+        setEmailId(userInfo.get(1));
         try {
             play(exchange);
         } catch (SQLException e) {
