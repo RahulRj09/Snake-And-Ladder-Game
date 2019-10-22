@@ -6,6 +6,8 @@ function login() {
         $.get("/login?emailId=" + emailId + "password=" + password, function (data) {
             if (data === true) {
                 window.location.replace("/SnakeAndLadderGame/home");
+            }else {
+                alert("Check Email-Id or Password")
             }
         });
     });
