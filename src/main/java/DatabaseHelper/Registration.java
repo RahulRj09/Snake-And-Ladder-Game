@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class Registration {
     private DatabaseConnection databaseConnection = new DatabaseConnection();
 
-    public void insert(String name, String emailId, String password) {
+    public boolean insert(String name, String emailId, String password) {
         boolean result = usersAlreadyExistsOrNot(emailId);
         if (result) {
             String sql = "insert into users(name,emailId,password) VALUES(?,?,?)";
@@ -22,7 +22,7 @@ public class Registration {
                 System.out.println(e.getMessage());
             }
         }
-        System.out.println("done");
+        return result;
     }
 
 
@@ -32,12 +32,12 @@ public class Registration {
              PreparedStatement preparedStatement = conn.prepareStatement(selectQuery)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 }

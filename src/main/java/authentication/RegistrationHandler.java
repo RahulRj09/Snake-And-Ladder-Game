@@ -27,9 +27,16 @@ public class RegistrationHandler implements HttpHandler {
         StringBuffer emailId = getEmailId(query, indexOfAnd + 10);
         StringBuffer password = getPassword(indexOfAndForPassword + 10, query);
         Registration registration = new Registration();
-        registration.insert(name.toString(), emailId.toString(), password.toString());
+        boolean result = registration.insert(name.toString(), emailId.toString(), password.toString());
         File root = FileSystemView.getFileSystemView().getHomeDirectory();
-        String path = root + "/SnakeAndLadderGame/src/main/java/resources/pages/home.html";
+        String path = "";
+        System.out.println(result);
+        if (result) {
+            path = root + "/SnakeAndLadderGame/src/main/java/resources/pages/home.html";
+        } else {
+            path = root + "/SnakeAndLadderGame/src/main/java/resources/pages/login.html";
+        }
+
         File file = new File(path);
         exchange.sendResponseHeaders(200, file.length());
         try (OutputStream os = exchange.getResponseBody()) {
